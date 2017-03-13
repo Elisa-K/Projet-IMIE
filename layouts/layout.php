@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>IMIE | Ecole de la filière du numérique</title>
+	<title>IMIE | Ecole de la filiÃ¨re du numÃ©rique</title>
 </head>
 <body>
 	<div class="container">
@@ -21,10 +21,10 @@
 										<ul>
 											<li><a href="">IT Start (Bac +1)</a></li>
 											<li><a href="">Digital Factory (BTS Support en Informatique (Bac +2)</a></li>
-											<li><a href="">Administrateur Systeme et Réseaux (Bac +3)</a></li>
-											<li><a href="">Développeur en Projets Numériques (Bac +3)</a></li>
-											<li><a href="">Concepteur Développeur en Projets Numériques (Bac +3)</a></li>
-											<li><a href="">Ingéniere et Management des Systèmes d'information (Bac +4/+5)</a></li>
+											<li><a href="">Administrateur Systeme et RÃ©seaux (Bac +3)</a></li>
+											<li><a href="">DÃ©veloppeur en Projets NumÃ©riques (Bac +3)</a></li>
+											<li><a href="">Concepteur DÃ©veloppeur en Projets NumÃ©riques (Bac +3)</a></li>
+											<li><a href="">IngÃ©niere et Management des SystÃ¨mes d'information (Bac +4/+5)</a></li>
 										</ul>
 									</div>
 									<div class="continu">
