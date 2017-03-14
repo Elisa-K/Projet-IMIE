@@ -8,6 +8,18 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+       <!-- Bootstrap core CSS     -->
+    <link href="../web/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--  Material Dashboard CSS    -->
+    <link href="../web/css/material-dashboard.css" rel="stylesheet"/>
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../web/css/demo.css" rel="stylesheet"/>
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
  
 </head>
@@ -108,7 +120,7 @@
 				<div class="container-fluid">
 
 					<p class="copyright pull-right">
-						&copy; <script>document.write(new Date().getFullYear())</script> made with love ;)
+						&copy; <script>document.write(new Date().getFullYear())</script> made with love <3
 					</p>
 				</div>
 			</footer>
