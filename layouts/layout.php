@@ -7,23 +7,51 @@
 <body>
 	<div class="container">
 		<div class="header">
-			<div class="row">
-				<div class="col-lg-12">
-					<img src="web/img/logo_imie.png" alt="logo imie"/>
-				</div>
-				<div class="col-lg-12">
-					<nav>
-						<ul>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header col-md-12 col-lg-12">
+						<button type="button" class="navbar-toggle toggle-nav collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar" style="background-color:white"></span>
+							<span class="icon-bar" style="background-color:white"></span>
+							<span class="icon-bar" style="background-color:white"></span>
+						</button>
+						<img src="web/img/logo_imie.png" class="logo" alt="logo imie"/>
+					</div>
+					<div class="collapse navbar-collapse col-md-12 col-lg-12" id="bs-example-navbar-collapse-1" style="width:100%">
+						<ul class="nav navbar-nav">	
 							<li onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="">Accueil</a></li>
 							<li onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Formations</a></li>
 							<li onmouseover="this.style.background='#FDB515';" onmouseout="this.style.background='';this.style.color='';"><a href="">Calendrier</a></li>
 							<li onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="">Candidater</a></li>
 							<li onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Contact</a></li>
 						</ul>
-					</nav>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+<!--fin header-->
+<!--debut vue afficher-->
+	<div class="container">
+	<?php include($vueAAfficher);?>
+	</div>
+<!--fin vue afficher-->
+	<footer class="footer">
+		<div class="container">
+			<div class="row main-footer">
+				<div class="list-footer col-lg-6">
+					<ul>
+						<li><a class="text-muted" href="">Mentions légales</a></li>
+						<li><a class="text-muted" href="">Contact</a></li>
+						<li><a class="text-muted" href="">Plan du site</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-6 text-footer">
+					<p class="text-muted">copyright© IMIE | Développement et Webdesign ACTANCE - Agence</p>
 				</div>
 			</div>
 		</div>
-	</div>
+	</footer>
 </body>
 </html>
