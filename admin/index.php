@@ -11,6 +11,53 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 <?php
+// session_start();
+// $pdo = PDOFactory::getMysqlConnection();
+
+// if (isset($_REQUEST['action'])) {
+// 	$action = $_REQUEST['action'];
+// } else {
+// 	$action = null;
+// }
+
+// switch ($action) {
+
+// 	case "verifLogin":
+// 		$adminRepo = new AdminRepository();
+// 		$admin = $adminRepo->getAdmin($pdo, $_POST['login'], $_POST['pwd']);
+
+// 		if($personne) {
+// 			$_SESSION['login'] = $personne->getLogin();
+// 			$_SESSION['nom'] = $personne->getNom();
+// 			$_SESSION['prenom'] = $personne->getPrenom();
+// 			$_SESSION['id'] = $personne->getId();
+// 			//On prépare la vue à afficher avec les données dont elle a besoin
+			
+// 		} else {
+// 				$message = "Identifiants invalides !";
+// 				$vueAAfficher = "views/login.php";
+// 			}
+// 		break;
+
+// 	case "disconnect":
+// 		$_SESSION = array();
+// 		session_destroy();
+// 		$vueAAfficher = "views/login.php";
+// 		break;
+
+// 	default:
+// 		if(empty($_SESSION['login'])) {
+// 			$vueAAfficher = "views/login.php";
+// 		} else {
+// 			//On prépare la vue a afficher avec les données dont elle a besoin
+
+// 			break;
+// 		}
+
+// }
+
+
+
 
 
 
@@ -49,27 +96,3 @@ include_once('layouts/layout.php');
 
     	});
 	</script>
-
-<?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//layout.php TOUJOURS a la fin
-include_once('layouts/layout.php');
-?>

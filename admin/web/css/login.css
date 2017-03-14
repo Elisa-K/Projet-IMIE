@@ -3,7 +3,14 @@
 .login-page {
   width: 360px;
   padding: 8% 0 0;
-  margin: auto;
+  margin-left: -50px;
+}
+
+.login-page img{
+  margin-bottom: 25px;
+  position: relative;
+  margin-left: 25%
+
 }
 .form {
   position: relative;
@@ -19,6 +26,7 @@
 .form p {
   font-size: 10px;
 }
+
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
@@ -40,6 +48,7 @@
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
+  font-weight: bold;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
@@ -94,11 +103,49 @@
 }
 body {
   background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #48b9c7, #8DC26F);
-  background: -moz-linear-gradient(right, #48b9c7, #8DC26F);
-  background: -o-linear-gradient(right, #48b9c7, #8DC26F);
-  background: linear-gradient(to left, #48b9c7, #8DC26F);
+  background: -webkit-linear-gradient(right, #48b9c7, #bad9a8);
+  background: -moz-linear-gradient(right, #48b9c7, #bad9a8);
+  background: -o-linear-gradient(right, #48b9c7, #bad9a8);
+  background: linear-gradient(to left, #48b9c7, #bad9a8);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
+}
+
+@media (max-width: 992px){
+  .login-page {
+    width: 600px;
+    padding: 8% 0 0;
+    margin-left: -150px;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 600px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form p {
+  font-size: 14px;
+}
+.form .connexion {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #48b9c7;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 18px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
 }

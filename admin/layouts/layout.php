@@ -8,20 +8,7 @@
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-       <!-- Bootstrap core CSS     -->
-    <link href="../web/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!--  Material Dashboard CSS    -->
-    <link href="../web/css/material-dashboard.css" rel="stylesheet"/>
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="../web/css/demo.css" rel="stylesheet"/>
-
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-
- 
 </head>
 
 <body>
@@ -29,11 +16,6 @@
 	<div class="wrapper">
 
 	    <div class="sidebar">
-			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-		        Tip 2: you can also add an image using data-image tag
-		    -->
 
 			<div class="logo">
 				<img src="../web/img/logo_imie.png" class="simple-text">
@@ -43,37 +25,37 @@
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li>
-	                    <a href="">
+	                    <a href="./index.php?action=">
 	                        <i class="material-icons">home</i>
 	                        <p>Accueil</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="">
+	                    <a href="./index.php?action=">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Tableau Fiches Contacts</p>
 	                    </a>
 	                </li>
 	               	<li>
-	                    <a href="">
+	                    <a href="./index.php?action=">
 	                        <i class="material-icons">search</i>
 	                        <p>Recherche</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="">
+	                    <a href="./index.php?action=">
 	                        <i class="material-icons">person</i>
 	                        <p>Nouvel Administrateur</p>
 	                    </a>
 	                </li>
 					<li>
-	                    <a href="">
+	                    <a href="./index.php?action=">
 	                        <i class="material-icons">file_upload</i>
 	                        <p>Exporter</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="">
+	                    <a href="./index.php?action=disconnect">
 	                        <i class="fa fa-sign-out"></i>
 	                        <p>Déconnexion</p>
 	                    </a>
@@ -102,7 +84,7 @@
 									<i class="material-icons">person</i>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="#" <i class="fa fa-sign-out"></i>Déconnexion</a></li>
+									<li><a href="./index.php?action=disconnect" <i class="fa fa-sign-out"></i>Déconnexion</a></li>
 								</ul>
 							</li>
 						</ul>

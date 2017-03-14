@@ -4628,11 +4628,13 @@ footer .btn {
   .navbar-nav.navbar-right > li > .dropdown-menu:before {
     left: auto;
     right: 12px;
+   
   }
 
   .navbar-nav.navbar-right > li > .dropdown-menu:after {
     left: auto;
     right: 12px;
+
   }
 
   .footer:not(.footer-big) nav > ul li:first-child {
@@ -4668,6 +4670,12 @@ footer .btn {
   }
   .sidebar .sidebar-wrapper {
     padding-bottom: 60px;
+  }
+  .sidebar .sidebar-wrapper i {
+    color: black;
+  }
+  .sidebar .sidebar-wrapper p {
+    color: black;
   }
   .sidebar .nav-mobile-menu {
     margin-top: 0;
@@ -4732,6 +4740,13 @@ footer .btn {
     display: none !important;
   }
 
+  .dropdown label  {
+    color: black;
+  }
+  .wrapper .sidebar .logo label{
+    color: black;
+  }
+
   .navbar-nav > li {
     float: none;
     position: relative;
@@ -4749,7 +4764,7 @@ footer .btn {
     left: auto;
     z-index: 1032;
     visibility: visible;
-    background-color: #9A9A9A;
+    background-color: #f9f9f9;
     overflow-y: visible;
     border-top: none;
     text-align: left;
