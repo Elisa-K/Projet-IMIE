@@ -2,7 +2,6 @@
     <link href="web/css/bootstrap.min.css" rel="stylesheet" />
 
     <!--  Material Dashboard CSS    -->
-    <link href="web/css/material-dashboard.css" rel="stylesheet"/>
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="web/css/demo.css" rel="stylesheet"/>
@@ -24,6 +23,8 @@ if (isset($_REQUEST['action'])) {
 } else {
 	$action = null;
 }
+
+$vue = "views/login.php";
 
 switch ($action) {
 
@@ -47,13 +48,9 @@ switch ($action) {
 	case "disconnect":
 		$_SESSION = array();
 		session_destroy();
-		header ('location:connexion.php');
-		exit();
+		$vue = "views/login.php";
 		break;
-
-	case "signin":
-		$vueAAfficher = "views/signin.php";
-		break;
+		
 
 	default:
 		if(empty($_SESSION['mail'])) {
@@ -80,9 +77,7 @@ switch ($action) {
 
 //layout.php TOUJOURS a la fin
 
-			include_once('layouts/layout.php');
-	
-
+		include_once('layouts/layoutLogin.php');
 ?>
 	<!--   Core JS Files   -->
 	<script src="web/js/jquery-3.1.0.min.js" type="text/javascript"></script>
