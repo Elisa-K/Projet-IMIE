@@ -18,44 +18,43 @@
 	    <div class="sidebar">
 
 			<div class="logo">
-				<img src="../web/img/logo_imie.png" class="simple-text">
-				<label>Bonjour <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom']?></label>
+				<img src="./web/img/logo_imie.png" class="simple-text">
 			</div>
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li>
-	                    <a href="./index.php?action=">
+	                    <a href="./index.php?action=" class="btn-menu1">
 	                        <i class="material-icons">home</i>
 	                        <p>Accueil</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=">
+	                    <a href="./index.php?action=" class="btn-menu2">
 	                        <i class="material-icons">content_paste</i>
-	                        <p>Tableau Fiches Contacts</p>
+	                        <p>Fiches Contacts</p>
 	                    </a>
 	                </li>
 	               	<li>
-	                    <a href="./index.php?action=">
+	                    <a href="./index.php?action=" class="btn-menu3">
 	                        <i class="material-icons">search</i>
 	                        <p>Recherche</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=">
+	                    <a href="./index.php?action=signin" class="btn-menu4">
 	                        <i class="material-icons">person</i>
 	                        <p>Nouvel Administrateur</p>
 	                    </a>
 	                </li>
 					<li>
-	                    <a href="./index.php?action=">
+	                    <a href="./index.php?action=" class="btn-menu5">
 	                        <i class="material-icons">file_upload</i>
 	                        <p>Exporter</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=disconnect">
+	                    <a href="./index.php?action=disconnect" class="btn-menu6">
 	                        <i class="fa fa-sign-out"></i>
 	                        <p>Déconnexion</p>
 	                    </a>

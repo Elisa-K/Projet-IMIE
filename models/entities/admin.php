@@ -3,7 +3,7 @@
 	class Admin {
 
 		protected $id;
-		protected $login;
+		protected $mail;
 		protected $mdp;
 		protected $nom;
 		protected $prenom;
@@ -15,11 +15,11 @@
 		public function setId($id) {
 			$this->id = $id;
 		}
-		public function getLogin() {
-			return $this->login;
+		public function getMail() {
+			return $this->mail;
 		}
-		public function setLogin($login) {
-			$this->login = $login;
+		public function setMail($mail) {
+			$this->mail = $mail;
 		}
 		public function getMdp() {
 			return $this->mdp;		
@@ -36,7 +36,7 @@
 		public function getPrenom() {
 			return $this->prenom;
 		}
-		public function setPrenom() {
+		public function setPrenom($prenom) {
 			$this->prenom = $prenom;
 		}
 	}

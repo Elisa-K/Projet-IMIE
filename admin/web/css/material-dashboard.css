@@ -472,11 +472,17 @@ h2.title {
   border-radius: 3px;
   color: #3C4858;
 }
+
+
 .sidebar .nav li:hover > a,
 .off-canvas-sidebar .nav li:hover > a {
-  background: rgba(200, 200, 200, 0.2);
-  color: #3C4858;
+  background-color: #D8D8D8;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
+
+
 .sidebar .nav li.active > a,
 .off-canvas-sidebar .nav li.active > a {
   color: #FFFFFF;
@@ -1448,7 +1454,7 @@ h2.title {
 }
 
 body {
-  background-color: #EEEEEE;
+  background-color: #fffcfc;
   color: #3C4858;
 }
 body.inverse {
@@ -1926,7 +1932,7 @@ output {
 label {
   font-size: 14px;
   line-height: 1.42857;
-  color: #AAAAAA;
+  color: #fdb515;
   font-weight: 400;
 }
 

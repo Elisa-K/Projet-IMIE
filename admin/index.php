@@ -7,14 +7,15 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="web/css/demo.css" rel="stylesheet"/>
 
+
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 <?php
 session_start();
-include_once('./library/PDOFactory.php');
-include_once('./models/entities/admin.php');
-
+include_once('../library/PDOFactory.php');
+include_once('../models/entities/admin.php');
+include_once('../models/repositories/AdminRepository.php');
 
 $pdo = PDOFactory::getMysqlConnection();
 
@@ -28,30 +29,33 @@ switch ($action) {
 
 	case "verifLogin":
 		$adminRepo = new AdminRepository();
-		$admin = $adminRepo->getAdmin($pdo, $_POST['login'], $_POST['pwd']);
+		$admin = $adminRepo->getAdmin($pdo, $_POST['mail'], $_POST['mdp']);
 
-		if($personne) {
-			$_SESSION['login'] = $personne->getLogin();
-			$_SESSION['nom'] = $personne->getNom();
-			$_SESSION['prenom'] = $personne->getPrenom();
-			$_SESSION['id'] = $personne->getId();
+		if($admin) {
+			$_SESSION['mail'] = $admin->getMail();
+			$_SESSION['nom'] = $admin->getNom();
+			$_SESSION['prenom'] = $admin->getPrenom();
+			$_SESSION['id'] = $admin->getId();
 			//On prépare la vue à afficher avec les données dont elle a besoin
 			
 		} else {
 				$message = "Identifiants invalides !";
-				$vueAAfficher = "views/login.php";
+				$vue = "views/login.php";
 			}
 		break;
 
 	case "disconnect":
 		$_SESSION = array();
 		session_destroy();
-		$vueAAfficher = "views/login.php";
+		$vue = "views/login.php";
+		break;
+	case "signin":
+		$vueAAfficher = "views/signin.php";
 		break;
 
 	default:
-		if(empty($_SESSION['login'])) {
-			$vueAAfficher = "views/login.php";
+		if(empty($_SESSION['mail'])) {
+			$vue = "views/login.php";
 		} else {
 			//On prépare la vue a afficher avec les données dont elle a besoin
 
@@ -73,7 +77,19 @@ switch ($action) {
 
 
 //layout.php TOUJOURS a la fin
-include_once('layouts/layout.php');
+$adminRepo = new AdminRepository();
+$admin = $adminRepo->getAdmin($pdo, $_POST['mail'], $_POST['mdp']);
+
+if($admin) {
+			$_SESSION['mail'] = $admin->getMail();
+			$_SESSION['nom'] = $admin->getNom();
+			$_SESSION['prenom'] = $admin->getPrenom();
+			$_SESSION['id'] = $admin->getId();
+			//On prépare la vue à afficher avec les données dont elle a besoin
+			include_once('layouts/layout.php');
+		}
+
+		include_once('layouts/layoutLogin.php');
 ?>
 	<!--   Core JS Files   -->
 	<script src="web/js/jquery-3.1.0.min.js" type="text/javascript"></script>
