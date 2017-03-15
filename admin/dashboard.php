@@ -37,13 +37,17 @@ switch ($action) {
 			$_SESSION['prenom'] = $admin->getPrenom();
 			$_SESSION['id'] = $admin->getId();
 			//On prépare la vue à afficher avec les données dont elle a besoin
-			
+			$vueAAfficher = "views/home.php";
 		} else {
 				$message = "Identifiants invalides !";
 				$vue = "views/login.php";
 			}
 		break;
 
+	case "home":
+		$vueAAfficher = "views/home.php";
+	break;
+	
 	case "disconnect":
 		$_SESSION = array();
 		session_destroy();
@@ -60,7 +64,7 @@ switch ($action) {
 			$vue = "views/login.php";
 		} else {
 			//On prépare la vue a afficher avec les données dont elle a besoin
-
+			$vueAAfficher = "views/home.php";
 			break;
 		}
 

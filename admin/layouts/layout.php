@@ -24,7 +24,7 @@
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li>
-	                    <a href="./dashboard.php?action=" class="btn-menu1">
+	                    <a href="./dashboard.php?action=home" class="btn-menu1">
 	                        <i class="material-icons">home</i>
 	                        <p>Accueil</p>
 	                    </a>
