@@ -4,7 +4,7 @@
 				<div class="login-page">
 					<img src="./web/img/logo_imie.png">
 	  				<div class="form">
-	   					 <form action='./index.php' method="POST" class="login-form">
+	   					 <form action='./dashboard.php' method="POST" class="login-form">
 			
 							<label>Bienvenue</label>
 						    <input type="text" name ="mail" placeholder="e-mail"/>

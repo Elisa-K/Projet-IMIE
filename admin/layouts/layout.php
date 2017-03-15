@@ -24,37 +24,37 @@
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li>
-	                    <a href="./index.php?action=" class="btn-menu1">
+	                    <a href="./dashboard.php?action=" class="btn-menu1">
 	                        <i class="material-icons">home</i>
 	                        <p>Accueil</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=" class="btn-menu2">
+	                    <a href="./dashboard.php?action=" class="btn-menu2">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Fiches Contacts</p>
 	                    </a>
 	                </li>
 	               	<li>
-	                    <a href="./index.php?action=" class="btn-menu3">
+	                    <a href="./dashboard.php?action=" class="btn-menu3">
 	                        <i class="material-icons">search</i>
 	                        <p>Recherche</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=signin" class="btn-menu4">
+	                    <a href="./dashboard.php?action=signin" class="btn-menu4">
 	                        <i class="material-icons">person</i>
 	                        <p>Nouvel Administrateur</p>
 	                    </a>
 	                </li>
 					<li>
-	                    <a href="./index.php?action=" class="btn-menu5">
+	                    <a href="./dashboard.php?action=" class="btn-menu5">
 	                        <i class="material-icons">file_upload</i>
 	                        <p>Exporter</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="./index.php?action=disconnect" class="btn-menu6">
+	                    <a href="./dashboard.php?action=disconnect" class="btn-menu6">
 	                        <i class="fa fa-sign-out"></i>
 	                        <p>Déconnexion</p>
 	                    </a>
@@ -83,7 +83,7 @@
 									<i class="material-icons">person</i>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="./index.php?action=disconnect" <i class="fa fa-sign-out"></i>Déconnexion</a></li>
+									<li><a href="./dashboard.php?action=disconnect" <i class="fa fa-sign-out"></i>Déconnexion</a></li>
 								</ul>
 							</li>
 						</ul>
