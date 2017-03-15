@@ -62,3 +62,31 @@ nav li{
 	text-align:center;
 }
 /*fin footer*/
+/*css home page*/
+.imgHome{
+	width: 377px;
+	height:257px;
+}
+.img2{
+	width:377px;
+	height:257px;
+	background-color:white;
+}
+.img2 a{
+	text-decoration:none;
+}
+.typo-intro{
+	font-family: 'intro_regular',Arial,Helvetica,sans-serif;
+	font-size:45px;
+	font-weight:normal;
+}
+.gray{
+	color:#e2e2e2;
+}
+.blue{
+	color:#48b9c7;
+}
+.yellow{
+	color:#fbd515;
+}
+
