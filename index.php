@@ -43,3 +43,4 @@ include_once('layouts/layout.php');
 ?>
 <script src="web/js/jquery-3.1.1.min.js"></script>
 <script src="web/js/bootstrap.js"></script>
+<script src="web/js/java.js"></script>

@@ -1,9 +1,21 @@
 body{
 	background-color:#f3f2f0;
 }
+.header .col-lg-12{
+	padding-left:0px;
+	padding-right:0px;
+}
+
 /*début du header*/
 .logo{
 	margin:5px ;
+}
+.btn-admin{
+	float:right;
+	margin-top:8px;
+}
+.navbar-toggle{
+	margin-left:5px;
 }
 .navbar-default{
 	background-color:#f3f2f0;
@@ -11,24 +23,21 @@ body{
 }
 .navbar-nav{
 	margin-top:15px;
+	display:table;
 }
 nav ul{
 	background-color:#686868;
 	border-radius:10px;
 	width:100%;
-	display: table;
 	margin-left:25%;
 }
 nav li{
-	display:table-cell;
 	width:auto;
 	text-align:center;
 }
-.nav > li{
-	display:table-cell;
-}
-.navbar-nav > li{
+.li-nav{
 	float:none;
+	display:table-cell;
 }
 .navbar-default .navbar-nav > li > a {
 	color:white;
@@ -39,6 +48,13 @@ nav li{
 .toggle-nav{
 	background-color:#686868;
 }
+.container-fluid{
+	padding-right:0px;
+	padding-left:0px;
+}
+.collapse{
+	width:100%;
+}
 /*fin header*/
 
 /*début footer*/
@@ -46,7 +62,7 @@ nav li{
 	border:solid 2px #686868;
 	border-left:none;
 	border-right:none;
-	margin:5 30 0 30;
+	margin:15 0 0 0;
 	padding-top:10px;
 }
 .list-footer ul{
@@ -63,9 +79,18 @@ nav li{
 }
 /*fin footer*/
 /*css home page*/
+.btn-info{
+	width:100%;
+	margin-bottom:10px;
+	background-color:#48b9c7;
+	font-weight:bold;
+}
+.black{
+	color:black;
+}
 .imgHome{
-	width: 377px;
-	height:257px;
+	width: 100%;
+	margin-bottom:30px;
 }
 .img2{
 	width:377px;
