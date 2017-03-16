@@ -56,11 +56,6 @@ switch ($action) {
 		break;
 
 
-	case "home":
-		if(!empty($_SESSION['mail'])) {
-			$vueAAfficher = "views/home.php";
-		}
-	break;
 
 	case "listContact":
 			if(!empty($_SESSION['mail'])) {
@@ -86,8 +81,10 @@ switch ($action) {
 		if(empty($_SESSION['mail'])) {
 			$vue = "views/login.php";
 		} else {
-			//On prépare la vue a afficher avec les données dont elle a besoin
-			$vueAAfficher = "views/home.php";
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+			$vueAAfficher = "views/listContact.php";
 			break;
 		}
 

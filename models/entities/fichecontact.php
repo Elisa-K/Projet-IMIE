@@ -3,35 +3,23 @@
 class FicheContact {
 
 		protected $id;
-		protected $numeroine;
 		protected $civilite;
 		protected $nom;
 		protected $prenom;
-		protected $nomJf;
 		protected $dateNaissance;
-		protected $lieuNaissance;
-		protected $deptNaissance;
-		protected $nationalite;
-		protected $adresse;
-		protected $cp;
-		protected $ville;
-		protected $pays;
-		protected $tel1;
-		protected $tel2;
+		protected $tel;
 		protected $email;
-		protected $emailConfirmation;
 		protected $origineScolaire;
 		protected $diplomeObtenu;
 		protected $etabOrigine;
-		protected $annee;
 		protected $statut;
 		protected $site;
 		protected $souhait1;
 		protected $souhait2;
 		protected $souhait3;
-		protected $observation;
-		protected $reorientation;
+		protected $infoImie;
 		protected $dateCreation;
+		protected $disponibilite;
 
 
 		public function getId() {
@@ -40,12 +28,7 @@ class FicheContact {
 		public function setId($id) {
 			$this->id = $id;
 		}
-		public function getNumeroIne() {
-			return $this->numeroIne;
-		}
-		public function setNumeroIne($numero_ine) {
-			$this->numeroIne = $numeroIne;
-		}
+
 		public function getCivilite() {
 			return $this->civilite;		
 		}
@@ -64,83 +47,23 @@ class FicheContact {
 		public function setPrenom($prenom) {
 			$this->prenom = $prenom;
 		}
-		public function getNomJf() {
-			return $this->nomJf;
-		}
-		public function setNomJf($nomJf) {
-			$this->nomJf = $nomJf;
-		}
 		public function getDateNaissance() {
 			return $this->dateNaissance;
 		}
 		public function setDateNaissance($dateNaissance) {
 			$this->dateNaissance = $dateNaissance;
 		}
-		public function getLieuNaissance() {
-			return $this->lieuNaissance;
+		public function getTel() {
+			return $this->tel;
 		}
-		public function setLieuNaissance($lieuNaissance) {
-			$this->lieuNaissance = $lieuNaissance;
-		}
-		public function getDeptNaissance() {
-			return $this->deptNaissance;
-		}
-		public function setDeptNaissance($debtNaissance) {
-			$this->deptNaissance;
-		}
-		public function getNationalite() {
-			return $this->nationalite;
-		}
-		public function setNationalite($nationalite) {
-			$this->nationalite = $nationalite;
-		}
-		public function getAdresse() {
-			return $this->adresse;
-		}
-		public function setAdresse($adresse) {
-			$this->adresse = $adresse;
-		}
-		public function getCp() {
-			return $this->cp;
-		}
-		public function setCp($cp) {
-			$this->cp = $cp;
-		}
-		public function getVille() {
-			return $this->ville;
-		}
-		public function setVille($ville) {
-			$this->ville = $ville;
-		}
-		public function getPays() {
-			return $this->pays;
-		}
-		public function setPays($pays) {
-			$this->pays = $pays;
-		}
-		public function getTel1() {
-			return $this->tel1;
-		}
-		public function setTel1($tel1) {
-			$this->tel1 = $tel1;
-		}
-		public function getTel2() {
-			return $this->tel2;
-		}
-		public function setTel2($tel2) {
-			$this->tel2 = $tel2;
+		public function setTel($tel) {
+			$this->tel = $tel;
 		}
 		public function getEmail() {
 			return $this->email;
 		}
 		public function setEmail($email) {
 			$this->email = $email;
-		}
-		public function getEmailConfirmation() {
-			return $this->emailConfirmation;
-		}
-		public function setEmailConfirmation($emailConfirmation) {
-			$this->emailConfirmation = $emailConfirmation;
 		}
 		public function getOrigineScolaire() {
 			return $this->origineScolaire;
@@ -159,12 +82,6 @@ class FicheContact {
 		}
 		public function setEtabOrigine($etabOrigine) {
 			$this->etabOrigine = $etabOrigine;
-		}
-		public function getAnnee() {
-			return $this->annee;
-		}
-		public function setAnnee($annee) {
-			$this->annee = $annee;
 		}
 		public function getStatut() {
 			return $this->statut;
@@ -196,23 +113,23 @@ class FicheContact {
 		public function setSouhait3($souhait3) {
 			$this->souhait3 = $souhait3;
 		}
-		public function getObservation() {
-			return $this->observation;
+		public function getInfoImie() {
+			return $this->infoImie;
 		}
-		public function setObservation($observation) {
-			$this->observation = $observation;
-		}
-		public function getReorientation() {
-			return $this->reorientation;
-		}
-		public function setReorientation($reorientation) {
-			$this->reorientation = $reorientation;
+		public function setInfoImie($infoImie) {
+			$this->infoImie = $infoImie;
 		}
 		public function getDateCreation() {
 			return $this->dateCreation;
 		}
 		public function setDateCreation($dateCreation) {
 			$this->dateCreation = $dateCreation;
+		}
+		public function getDisponibilite() {
+			return $this->disponibilite;
+		}
+		public function setDisponibilite($disponibilite) {
+			$this->disponibilite = $disponibilite;
 		}
 
 	}

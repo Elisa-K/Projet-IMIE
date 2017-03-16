@@ -35,9 +35,9 @@
       echo '<td>' . $contact->getSite() . '</td>';
       echo '<td>' . $contact->getSouhait1() . '</td>';
       echo '<td>' . $contact->getEmail() . '</td>';
-      echo '<td>' . $contact->getTel1() . '</td>';
-      echo '<td><a href="./index.php?action=formEditContact&id=' . $contact->getId() . '"">Editer</a></td>';
-      echo '<td><a href="./index.php?action=deleteContact&id=' . $contact->getId() . '">Supprimer</a></td>';
+      echo '<td>' . $contact->getTel() . '</td>';
+      echo '<td><a href="./index.php?action=formEditContact&id=' . $contact->getId() . '""><i class="material-icons">create</i></a></td>';
+      echo '<td><a href="./index.php?action=deleteContact&id=' . $contact->getId() . '"><i class="material-icons">clear</i></a></td>';
       echo '</tr>';
     }
     ?>

@@ -9,6 +9,7 @@
 							<label>Bienvenue</label>
 						    <input type="text" name ="mail" placeholder="e-mail"/>
 						    <input type="password" name="mdp" placeholder="mot de passe"/>
+							<input type="checkbox" name="">Se souvenir de moi</input>
 
 							<input class="connexion" type="submit" value="Connexion"/>
 							<label><?php if(isset($message)) echo $message ?></label>
