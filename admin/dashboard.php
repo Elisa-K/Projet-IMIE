@@ -15,6 +15,9 @@
 session_start();
 include_once('../library/PDOFactory.php');
 include_once('../models/entities/admin.php');
+include_once('../models/entities/fichecontact.php');
+
+include_once('../models/repositories/ContactRepository.php');
 include_once('../models/repositories/AdminRepository.php');
 
 $pdo = PDOFactory::getMysqlConnection();
@@ -34,6 +37,7 @@ switch ($action) {
 		if($admin) {
 			$_SESSION['mail'] = $admin->getMail();
 			$_SESSION['nom'] = $admin->getNom();
+			$_SESSION['mdp'] = $admin->getMdp();
 			$_SESSION['prenom'] = $admin->getPrenom();
 			$_SESSION['id'] = $admin->getId();
 			//On prépare la vue à afficher avec les données dont elle a besoin
@@ -44,10 +48,6 @@ switch ($action) {
 			}
 		break;
 
-	case "home":
-		$vueAAfficher = "views/home.php";
-	break;
-	
 	case "disconnect":
 		$_SESSION = array();
 		session_destroy();
@@ -55,8 +55,31 @@ switch ($action) {
 		exit();
 		break;
 
+
+	case "home":
+		if(!empty($_SESSION['mail'])) {
+			$vueAAfficher = "views/home.php";
+		}
+	break;
+
+	case "listContact":
+			if(!empty($_SESSION['mail'])) {
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+
+			$vueAAfficher = "views/listContact.php";
+
+		}
+		break;
+
 	case "signin":
-		$vueAAfficher = "views/signin.php";
+		if(!empty($_SESSION['mail'])) {
+			$vueAAfficher = "views/signin.php";
+		}else {
+			header ('location:index.php');
+			exit();
+		}
 		break;
 
 	default:

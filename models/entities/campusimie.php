@@ -1,6 +1,6 @@
 <?php
 
-class campusimie {
+class CampusImie {
 
 	protected $id;
 	protected $nom;

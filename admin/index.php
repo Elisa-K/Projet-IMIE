@@ -36,9 +36,11 @@ switch ($action) {
 			$_SESSION['mail'] = $admin->getMail();
 			$_SESSION['nom'] = $admin->getNom();
 			$_SESSION['prenom'] = $admin->getPrenom();
+			$_SESSION['mdp'] = $admin->getMdp();
 			$_SESSION['id'] = $admin->getId();
 			//On prépare la vue à afficher avec les données dont elle a besoin
-			
+			header ('location:dashboard.php');
+			exit();
 		} else {
 				$message = "Identifiants invalides !";
 				$vue = "views/login.php";
@@ -48,7 +50,7 @@ switch ($action) {
 		
 
 	default:
-		if(empty($_SESSION['mail'])) {
+		if(empty($_SESSION['mail']) && empty($_SESSION['mdp'])) {
 			$vue = "views/login.php";
 		} else {
 			//On prépare la vue a afficher avec les données dont elle a besoin

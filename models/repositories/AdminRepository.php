@@ -6,11 +6,6 @@
     public function getAdmin($pdo, $mail, $mdp) {
 
 
-
-  		// Pas sécurisé contre les injections SQL
-  		// Entrer " OR 1=1 # pour vous connectez sans connaître un login et un password d'un utilisateur enregistré.
-  		//$resultat = $pdo->query('SELECT id, nom, prenom, login, password FROM user WHERE login = "' . $login . '" AND password = "' . $password . '"');
-
   		$resultat = $pdo->prepare('SELECT id, nom, prenom, mail, mdp FROM admin WHERE mail = :mail AND mdp = :mdp');
 
   		$resultat->bindParam(':mail', $mail, PDO::PARAM_STR);

@@ -1,6 +1,6 @@
 <?php
 
-class fichecontact {
+class FicheContact {
 
 		protected $id;
 		protected $numeroine;
@@ -31,6 +31,7 @@ class fichecontact {
 		protected $souhait3;
 		protected $observation;
 		protected $reorientation;
+		protected $dateCreation;
 
 
 		public function getId() {
@@ -60,7 +61,7 @@ class fichecontact {
 		public function getPrenom() {
 			return $this->prenom;
 		}
-		public function setPrenom() {
+		public function setPrenom($prenom) {
 			$this->prenom = $prenom;
 		}
 		public function getNomJf() {
@@ -78,7 +79,7 @@ class fichecontact {
 		public function getLieuNaissance() {
 			return $this->lieuNaissance;
 		}
-		public function setLieuNaissance() {
+		public function setLieuNaissance($lieuNaissance) {
 			$this->lieuNaissance = $lieuNaissance;
 		}
 		public function getDeptNaissance() {
@@ -206,6 +207,12 @@ class fichecontact {
 		}
 		public function setReorientation($reorientation) {
 			$this->reorientation = $reorientation;
+		}
+		public function getDateCreation() {
+			return $this->dateCreation;
+		}
+		public function setDateCreation($dateCreation) {
+			$this->dateCreation = $dateCreation;
 		}
 
 	}

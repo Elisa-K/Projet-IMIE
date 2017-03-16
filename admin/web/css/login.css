@@ -102,16 +102,24 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #48b9c7, #bad9a8);
-  background: -moz-linear-gradient(right, #48b9c7, #bad9a8);
-  background: -o-linear-gradient(right, #48b9c7, #bad9a8);
-  background: linear-gradient(to left, #48b9c7, #bad9a8);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
 
+body:before {
+  content: "";
+        position: fixed;
+        height: 100%; width: 100%;
+        background: url("../img/background-login.jpg");
+        background-size: cover;
+        z-index: -1; /* Keep the background behind the content */     
+        -webkit-filter: blur(8px);
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+    background-size: cover; /* version standardisée */
+}
 @media (max-width: 992px){
   .login-page {
     width: 600px;

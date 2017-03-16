@@ -1,0 +1,30 @@
+plug-in jquery: formulaire en plusieurs étapes
+
+http://www.jankoatwarpspeed.com/turn-any-webform-into-a-powerful-wizard-with-jquery-formtowizard-plugin/
+
+ergonomie d'un formulaire:
+http://www.ergolab.net/articles/ergonomie-formulaire.php
+http://blog.canal-web.fr/sarah/sujets-techniques/etude-sur-lergonomie-dans-les-formulaires/
+
+site inspiration formulaire:
+http://www.marevueweb.com/inspiration-web/formulaires-web-creatifs/
+https://www.google.fr/imgres?imgurl=http%3A%2F%2Fwww.paris-beyrouth.org%2FIMG%2Fjpg%2Fespaceprive.jpg&imgrefurl=http%3A%2F%2Fwww.pyrat.net%2F%40Paris-Beyrouth%40.html%3Fid_syndic_article%3D226755&docid=RnNzBw52UkBoQM&tbnid=AhX2zJfDOixYNM%3A&vet=1&w=833&h=652&bih=638&biw=1366&q=web%20formulaire%20dynamique&ved=0ahUKEwjxob-yhLXSAhUM6xoKHcbVAyw4ZBAzCBsoGDAY&iact=mrc&uact=8#h=652&imgrc=AhX2zJfDOixYNM:&vet=1&w=833
+
+
+
+
+Formulaire
+https://codepen.io/atakan/pen/gqbIz
+https://codepen.io/rexkirby/pen/Fdnlz
+https://codepen.io/carlinscuderi/pen/XmeyvV
+
+formulaire de connexion
+https://codepen.io/colorlib/pen/rxddKy
+https://codepen.io/ace-subido/pen/Cuiep
+https://codepen.io/frytyler/pen/EGdtg
+
+dashboard
+https://codepen.io/yoannhel/pen/vmBKa
+https://codepen.io/novae/pen/uGrIf
+https://codepen.io/golcinho/pen/xwXagQ
+https://codepen.io/jpanter/pen/LxPKmz

@@ -15,7 +15,7 @@
 
 	<div class="wrapper">
 
-	    <div class="sidebar">
+	    <div class="sidebar" data-image="./web/img/sidebar-3.jpg">
 
 			<div class="logo">
 				<img src="./web/img/logo_imie.png" class="simple-text">
@@ -24,19 +24,13 @@
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
 	                <li>
-	                    <a href="./dashboard.php?action=home" class="btn-menu1">
-	                        <i class="material-icons">home</i>
-	                        <p>Accueil</p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="./dashboard.php?action=" class="btn-menu2">
+	                    <a href="./dashboard.php?action=listContact" class="btn-menu2">
 	                        <i class="material-icons">content_paste</i>
 	                        <p>Fiches Contacts</p>
 	                    </a>
 	                </li>
 	               	<li>
-	                    <a href="./dashboard.php?action=" class="btn-menu3">
+	                    <a href="./dashboard.php?action=recherche" class="btn-menu3">
 	                        <i class="material-icons">search</i>
 	                        <p>Recherche</p>
 	                    </a>
@@ -45,12 +39,6 @@
 	                    <a href="./dashboard.php?action=signin" class="btn-menu4">
 	                        <i class="material-icons">person</i>
 	                        <p>Nouvel Administrateur</p>
-	                    </a>
-	                </li>
-					<li>
-	                    <a href="./dashboard.php?action=" class="btn-menu5">
-	                        <i class="material-icons">file_upload</i>
-	                        <p>Exporter</p>
 	                    </a>
 	                </li>
 	                <li>
