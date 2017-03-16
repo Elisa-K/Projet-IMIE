@@ -45,7 +45,7 @@
 						<li><a class="text-muted" href="">Mentions légales</a></li>
 						<li><a class="text-muted" href="">Contact</a></li>
 						<li><a class="text-muted" href="">Plan du site</a></li>
-						<li><a class="text-muted" href="/projet-imie/admin/index.php">ADMIN</a></li>
+						<li><a class="text-muted" href="./admin/index.php">ADMIN</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-6 text-footer">

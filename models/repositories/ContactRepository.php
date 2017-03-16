@@ -9,7 +9,7 @@
     public function getAll($pdo){
 
       //Effectuer la requête en bbd pour récupérer la
-      $req = $pdo->query("SELECT id, civilite, nom, prenom, email, tel1, id_campus_imie, id_formation1, date_naissance, date_creation FROM fiche_contact");
+      $req = $pdo->query("SELECT id, civilite, nom, prenom, email, tel, id_campus_imie, id_formation, date_naissance, date_formulaire FROM fiche_contact");
 
       $req->setFetchMode(PDO::FETCH_OBJ);
 
@@ -24,7 +24,7 @@
       while ($obj = $req->fetch()){
 
         $idCampus = $obj->id_campus_imie;
-        $idFormation = $obj->id_formation1;
+        $idFormation = $obj->id_formation;
 
         $res = $pdo->query("SELECT nom FROM campus_imie WHERE id =" . $idCampus);
           $res->setFetchMode(PDO::FETCH_OBJ);
@@ -41,10 +41,10 @@
         $contact->setCivilite($obj->civilite);
         $contact->setPrenom($obj->prenom);
         $contact->setDateNaissance($obj->date_naissance);
-        $contact->setDateCreation($obj->date_creation);
+        $contact->setDateCreation($obj->date_formulaire);
         $contact->setNom($obj->nom);
         $contact->setEmail($obj->email);
-        $contact->setTel1($obj->tel1);
+        $contact->setTel($obj->tel);
         $contact->setSite($obj3);
         $contact->setSouhait1($obj5);
 

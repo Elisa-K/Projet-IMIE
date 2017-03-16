@@ -6,7 +6,7 @@
     public function getAdmin($pdo, $mail, $mdp) {
 
 
-  		$resultat = $pdo->prepare('SELECT id, nom, prenom, mail, mdp FROM admin WHERE mail = :mail AND mdp = :mdp');
+  		$resultat = $pdo->prepare('SELECT id, nom, prenom, login, mdp FROM admin WHERE login = :mail AND mdp = :mdp');
 
   		$resultat->bindParam(':mail', $mail, PDO::PARAM_STR);
   		$resultat->bindParam(':mdp', $mdp, PDO::PARAM_STR);
@@ -23,7 +23,7 @@
   			$admin->setId($obj->id);
   			$admin->setNom($obj->nom);
   			$admin->setPrenom($obj->prenom);
-  			$admin->setMail($obj->mail);
+  			$admin->setMail($obj->login);
   			$admin->setMdp($obj->mdp);
 
   			return $admin;
