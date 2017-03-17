@@ -16,8 +16,12 @@ session_start();
 include_once('../library/PDOFactory.php');
 include_once('../models/entities/admin.php');
 include_once('../models/entities/fichecontact.php');
+include_once('../models/entities/formation.php');
+include_once('../models/entities/campusimie.php');
 
 include_once('../models/repositories/ContactRepository.php');
+include_once('../models/repositories/FormationRepository.php');
+include_once('../models/repositories/CampusRepository.php');
 include_once('../models/repositories/AdminRepository.php');
 
 $pdo = PDOFactory::getMysqlConnection();
@@ -83,6 +87,13 @@ switch ($action) {
 			$contactRepo = new ContactRepository();
 			$id = $_GET['id'];
 			$contact = $contactRepo->getOneById($pdo, $id);
+
+			$campusRepo = new CampusRepository();
+			$listCampus = $campusRepo -> getAll($pdo);
+
+			$formationRepo = new FormationRepository();
+			$listFormation = $formationRepo -> getAll($pdo);
+
 			$vueAAfficher = "views/formEditContact.php";
 		}else {
 			header ('location:index.php');

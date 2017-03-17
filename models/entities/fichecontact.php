@@ -102,13 +102,13 @@ class FicheContact {
 			$this->souhait1 = $souhait1;
 		}
 		public function getSouhait2() {
-			return $this->souhait1;
+			return $this->souhait2;
 		}
 		public function setSouhait2($souhait2) {
 			$this->souhait2 = $souhait2;
 		}
 		public function getSouhait3() {
-			return $this->souhait1;
+			return $this->souhait3;
 		}
 		public function setSouhait3($souhait3) {
 			$this->souhait3 = $souhait3;

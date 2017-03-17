@@ -1,19 +1,20 @@
 <?php
 
-class formation {
+class Formation {
 
 	protected $id;
 	protected $nom;
 
 
+
 	public function getId() {
-		return $this->$id;
+		return $this->id;
 	}
-	public function setID($id) {
+	public function setId($id) {
 		$this->id = $id;
 	}
 	public function getNom() {
-		return $this->$nom;
+		return $this->nom;
 	}
 	public function setNom($nom) {
 		$this->nom = $nom;

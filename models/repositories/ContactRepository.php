@@ -71,12 +71,30 @@
  public function getOneById($pdo, $id) {
 
 
-    $resultat = $pdo->query('SELECT id, civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel FROM fiche_contact WHERE id = ' . $id);
+    $resultat = $pdo->query('SELECT f.id, f.civilite, f.nom, f.prenom, f.date_naissance, f.id_formation, f.id_formation_1, f.id_formation_2, f.id_campus_imie, f.email, f.tel, c.nom AS cnom, fo1.nom AS fonom, fo2.nom as fo2nom, fo3.nom as fo3nom FROM fiche_contact f INNER JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id = ' . $id);
 
     $resultat->setFetchMode(PDO::FETCH_OBJ);
 
     $obj = $resultat->fetch();
 
+    $campus = new Campus();
+    $campus->setId($obj->id_campus_imie);
+    $campus->setNom($obj->cnom);
+
+    $formation1 = new Formation();
+    $formation1->setId($obj->id_formation);
+    $formation1->setNom($obj->fonom);
+        var_dump($formation1);
+        
+    $formation2 = new Formation();
+    $formation2->setId($obj->id_formation_1);
+    $formation2->setNom($obj->fo2nom);
+        var_dump($formation2);
+
+    $formation3 = new Formation();
+    $formation3->setId($obj->id_formation_2);
+    $formation3->setNom($obj->fo3nom);
+        var_dump($formation3);
 
     $contact = new FicheContact();
     $contact->setId($obj->id);
@@ -84,10 +102,10 @@
     $contact->setNom($obj->nom);
     $contact->setPrenom($obj->prenom);
     $contact->setDateNaissance($obj->date_naissance);
-    $contact->setSouhait1($obj->id_formation);
-    $contact->setSouhait2($obj->id_formation_1);
-    $contact->setSouhait3($obj->id_formation_2);
-    $contact->setSite($obj->id_campus_imie);
+    $contact->setSouhait1($formation1);
+    $contact->setSouhait2($formation2);
+    $contact->setSouhait3($formation3);
+    $contact->setSite($campus);
     $contact->setEmail($obj->email);
     $contact->setTel($obj->tel);
 

@@ -2,14 +2,14 @@
 
 //Les objets repository permettent de récupérer des enregistrements en base de données
 
-  class CampusRepository
+  class FormationRepository
   {
 
     //Récupère les clients en base de données
     public function getAll($pdo){
 
       //Effectuer la requête en bbd pour récupérer la
-      $req = $pdo->query("SELECT id, nom FROM campus_imie ORDER BY nom");
+      $req = $pdo->query("SELECT id, nom FROM formation ORDER BY nom");
 
       $req->setFetchMode(PDO::FETCH_OBJ);
 
@@ -19,20 +19,20 @@
       // 3 -  pour chaque onjet client instanciés et hydratés, les ajouter dans un tableau
       // 4 - retourner ensuite ce tableau avec l'instruction return;
 
-      $listCampus = array();
+      $listFormation = array();
 
       while ($obj = $req->fetch()){
 
-        $campus = new Campus();
-        $campus->setId($obj->id);
-        $campus->setNom($obj->nom);
+        $formation = new Formation();
+        $formation->setId($obj->id);
+        $formation->setNom($obj->nom);
 
 
-        $listCampus[] = $campus;
+        $listFormation[] = $formation;
 
 
       }
 
-      return $listCampus;
+      return $listFormation;
     }
   }
