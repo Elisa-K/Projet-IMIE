@@ -116,7 +116,11 @@ switch ($action) {
 		    $contact->setTel($_POST['tel']);
 
 
-			$message = $contact->save($pdo);
+			$message = $contact->save($pdo, $_POST["formation2"], $_POST["formation3"]);
+
+			$contactRepo = new ContactRepository();
+			$id = $_POST['id'];
+			$contact = $contactRepo->getOneById($pdo, $id);
 
 			$campusRepo = new CampusRepository();
 			$listCampus = $campusRepo -> getAll($pdo);

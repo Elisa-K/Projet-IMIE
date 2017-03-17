@@ -21,24 +21,38 @@ class FicheContact {
 		protected $dateCreation;
 		protected $disponibilite;
 
-  public function save($pdo) {
+public function save($pdo, $formation2, $formation3) {
     
     //Si l'id est renseigné à l'appel de la méthode alors c'est une mise à jour, sinon $id équivaut à false et alors l'objet client actuel doit faire l'objet d'un nouvel enregistrement.
     if($this->id) {
       //appeler la bonne méthode
-      $message = $this->update($pdo);
+      $message = $this->update($pdo, $formation2, $formation3);
       return $message;
     } else {
       $message = $this->insert($pdo);
       return $message;
     }
   }
-private function update($pdo) {
+private function update($pdo, $formation2, $formation3) {
 
     try {
+    	
+    if(empty($formation2)){
+    	$stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = NULL, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
-      $stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation1 = :formation2, id_formation2 = :formation3, id_campus = :campus, email = :email, tel = :tel, WHERE id = :id');
+    $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
+      $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
+      $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
+      $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
+      $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
+      $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
 
+    }elseif (empty($formation3)){
+
+      $stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = :formation2, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
       $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
@@ -46,14 +60,35 @@ private function update($pdo) {
       $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
       $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
       $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
-      $stmt->bindParam(':formation1', $this->souhait2, PDO::PARAM_INT);
-      $stmt->bindParam(':formation1', $this->souhait3, PDO::PARAM_INT);
+      $stmt->bindParam(':formation2', $this->souhait2, PDO::PARAM_INT);
       $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
       $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
-      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
+
+    }else{
+
+      $stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = :formation2, id_formation_2 = :formation3, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
+
+
+       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
+      $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
+      $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
+      $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
+      $stmt->bindParam(':formation2', $this->souhait2, PDO::PARAM_INT);
+      $stmt->bindParam(':formation3', $this->souhait3, PDO::PARAM_INT);
+      $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
+      $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
+
+
+	}
+
 
 
       $stmt->execute();
+
 
       return "Le contact a été mis à jour avec succès";
     }

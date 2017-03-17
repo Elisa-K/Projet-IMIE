@@ -53,8 +53,8 @@
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Campus</label>
 													<select class="form-control" name="campus" >
-													<option><?php echo $contact->getSite()->getNom() ?></option>
-													<?php foreach ($listCampus as $campus ) { ?>
+													<option value=<?php echo $contact->getSite()->getId()?>><?php echo $contact->getSite()->getNom() ?></option>
+													<?php foreach ($listCampus as $campus) { ?>
 													        <option value=<?php echo $campus->getId()?>>
 															      <?php echo $campus->getNom(); ?>
 															</option>
@@ -69,7 +69,7 @@
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 1</label>
 													<select class="form-control" name="formation1" >
-													<option><?php echo $contact->getSouhait1()->getNom() ?></option>
+													<option value=<?php echo $contact->getSouhait1()->getid()?>><?php echo $contact->getSouhait1()->getNom() ?></option>
 													<?php foreach ($listFormation as $formation) { ?>
 													        <option value=<?php echo $formation->getId()?>>
 															      <?php echo $formation->getNom(); ?>
@@ -83,7 +83,7 @@
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 2</label>
 													<select class="form-control" name="formation2" >
-													<option><?php echo $contact->getSouhait2()->getNom() ?></option>
+													<option value=<?php echo $contact->getSouhait2()->getid()?>><?php echo $contact->getSouhait2()->getNom() ?></option>
 													<?php foreach ($listFormation as $formation) { ?>
 													        <option value=<?php echo $formation->getId()?>>
 															      <?php echo $formation->getNom(); ?>
@@ -97,7 +97,7 @@
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 3</label>
 													<select class="form-control" name="formation3" >
-													<option><?php echo $contact->getSouhait3()->getNom() ?></option>
+													<option value=<?php echo $contact->getSouhait2()->getid()?>><?php echo $contact->getSouhait3()->getNom() ?></option>
 													<?php foreach ($listFormation as $formation) { ?>
 													        <option value=<?php echo $formation->getId()?>>
 															      <?php echo $formation->getNom(); ?>
@@ -108,6 +108,7 @@
 												</div>
 	                                        </div>
 	                                    </div>
+	                                    	<label><?php if(isset($message)) echo $message ?></label>
 	                                    <button type="submit" class="btn btn-primary pull-right">Mettre à jour</button>
 	                                    <input type="hidden" name="id" value="<?php echo $contact->getId() ?>"/>
 										<input type="hidden" name="action" value="updateContact"/>
