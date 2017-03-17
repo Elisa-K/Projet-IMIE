@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12 sol-md-12 col-lg-12">
-		<button class="btn btn-lg btn-info">POUR <span class="black">CANDIDATER</span> CLIQUEZ <span class="black">ICI</span></button>
+		<a href="./index.php?action=candidater"><button class="btn btn-lg btn-info">POUR <span class="black">CANDIDATER</span> CLIQUEZ <span class="black">ICI</span></button></a>
 	</div>
 </div>
 
