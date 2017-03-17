@@ -9,7 +9,7 @@
     public function getAll($pdo){
 
       //Effectuer la requête en bbd pour récupérer la
-      $req = $pdo->query("SELECT id, nom FROM campus_imie ORDER BY nom");
+      $req = $pdo->query("SELECT id, nom FROM statut ORDER BY nom");
 
       $req->setFetchMode(PDO::FETCH_OBJ);
 
