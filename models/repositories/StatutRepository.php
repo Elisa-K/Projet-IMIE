@@ -2,7 +2,7 @@
 
 //Les objets repository permettent de récupérer des enregistrements en base de données
 
-  class CampusRepository
+  class StatutRepository
   {
 
     //Récupère les clients en base de données

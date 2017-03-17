@@ -84,17 +84,14 @@
     $formation1 = new Formation();
     $formation1->setId($obj->id_formation);
     $formation1->setNom($obj->fonom);
-        var_dump($formation1);
-        
+
     $formation2 = new Formation();
     $formation2->setId($obj->id_formation_1);
     $formation2->setNom($obj->fo2nom);
-        var_dump($formation2);
 
     $formation3 = new Formation();
     $formation3->setId($obj->id_formation_2);
     $formation3->setNom($obj->fo3nom);
-        var_dump($formation3);
 
     $contact = new FicheContact();
     $contact->setId($obj->id);
