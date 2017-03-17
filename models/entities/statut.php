@@ -1,6 +1,6 @@
 <?php
 
-class statut {
+class Statut {
 
 	protected $id;
 	protected $nom;

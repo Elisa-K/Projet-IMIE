@@ -18,11 +18,11 @@ include_once('../models/entities/admin.php');
 include_once('../models/entities/fichecontact.php');
 include_once('../models/entities/formation.php');
 include_once('../models/entities/campusimie.php');
-
+include_once('../models/entities/statut.php');
 include_once('../models/repositories/ContactRepository.php');
 include_once('../models/repositories/FormationRepository.php');
 include_once('../models/repositories/CampusRepository.php');
-include_once('../models/repositories/AdminRepository.php');
+include_once('../models/repositories/StatutRepository.php');
 
 $pdo = PDOFactory::getMysqlConnection();
 

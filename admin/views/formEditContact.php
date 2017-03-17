@@ -94,7 +94,14 @@
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 3</label>
-													<input type="text" class="form-control" >
+													<select class="form-control" name="formation3" >
+													<option><?php echo $contact->getSouhait3()->getNom() ?></option>
+													<?php foreach ($listFormation as $formation) { ?>
+													        <option value=<?php echo $formation->getId()?>>
+															      <?php echo $formation->getNom(); ?>
+															</option>
+													<?php } ?>
+													</select>
 												</div>
 	                                        </div>
 	                                    </div>
