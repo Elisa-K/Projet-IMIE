@@ -1,5 +1,7 @@
 <div class="row">
   <div class="col-md-12">
+ <a href="./dashboard.php?action=export"><input type="button" value="Exporter"></a>
+
     <div class="card">
       <div class="card-header" data-background-color="purple">
         <h4 class="title">Listes Contacts</h4>
@@ -36,14 +38,16 @@
       echo '<td>' . $contact->getSouhait1() . '</td>';
       echo '<td>' . $contact->getEmail() . '</td>';
       echo '<td>' . $contact->getTel() . '</td>';
-      echo '<td><a href="./index.php?action=formEditContact&id=' . $contact->getId() . '""><i class="material-icons">create</i></a></td>';
-      echo '<td><a href="./index.php?action=deleteContact&id=' . $contact->getId() . '"><i class="material-icons">clear</i></a></td>';
+      echo '<td><a href="./dashboard.php?action=formEditContact&id=' . $contact->getId() . '""><i class="material-icons">create</i></a></td>';
+      echo '<td><a href="./dashboard.php?action=deleteContact&id=' . $contact->getId() . '"><i class="material-icons">clear</i></a></td>';
       echo '</tr>';
     }
     ?>
   </tbody>
 </table>
+
 </div>
 </div>
+  <input type="button" value="Exporter">
 </div>
 </div>

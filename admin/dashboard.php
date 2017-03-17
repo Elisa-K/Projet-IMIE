@@ -68,6 +68,28 @@ switch ($action) {
 		}
 		break;
 
+	case "export":
+	if(!empty($_SESSION['mail'])) {
+			$contactRepo = new ContactRepository();
+			$export = $contactRepo -> export($pdo);
+
+			$vueAAfficher = "views/listContact.php";
+		}
+	break;
+
+	case "formEditContact":
+		if(!empty($_SESSION['mail'])) {
+
+			$contactRepo = new ContactRepository();
+			$id = $_GET['id'];
+			$contact = $contactRepo->getOneById($pdo, $id);
+			$vueAAfficher = "views/formEditContact.php";
+		}else {
+			header ('location:index.php');
+			exit();
+		}
+		break;
+
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
 			$vueAAfficher = "views/signin.php";
