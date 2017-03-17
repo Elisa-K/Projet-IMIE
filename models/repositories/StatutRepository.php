@@ -23,7 +23,7 @@
 
       while ($obj = $req->fetch()){
 
-        $statut = new Campus();
+        $statut = new Statut();
         $statut->setId($obj->id);
         $statut->setNom($obj->nom);
 

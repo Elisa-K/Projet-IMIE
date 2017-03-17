@@ -8,7 +8,7 @@
 	                                <h4 class="title">Editer le contact</h4>
 	                            </div>
 	                            <div class="card-content">
-	                                <form>
+	                                <form action="./dashboard.php" method="POST">
 	                                    <div class="row">
 	                                        <div class="col-md-1">
 												<div class="form-group label-floating">
@@ -31,7 +31,7 @@
 	                                       	<div class="col-md-3">
 												<div class="form-group label-floating">
 													<label class="control-label">Date de Naissance</label>
-													<input type="date" class="form-control" name="date_naissance" value="<?php echo $contact->getDateNaissance() ?>">
+													<input type="date" class="form-control" name="dateNaissance" value="<?php echo $contact->getDateNaissance() ?>">
 												</div>
 	                                        </div>
 	                                    </div>
@@ -75,6 +75,7 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+													<option></option>
 													</select>
 												</div>
 	                                        </div>
@@ -88,6 +89,7 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+													<option></option>
 													</select>
 												</div>
 	                                        </div>
@@ -101,11 +103,14 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+													<option></option>
 													</select>
 												</div>
 	                                        </div>
 	                                    </div>
 	                                    <button type="submit" class="btn btn-primary pull-right">Mettre à jour</button>
+	                                    <input type="hidden" name="id" value="<?php echo $contact->getId() ?>"/>
+										<input type="hidden" name="action" value="updateContact"/>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

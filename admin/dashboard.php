@@ -100,6 +100,36 @@ switch ($action) {
 			exit();
 		}
 		break;
+	case "updateContact":
+		if(!empty($_SESSION['mail'])) {
+			$contact = new FicheContact();
+		    $contact->setId($_POST['id']);
+		    $contact->setCivilite($_POST['civ']);
+		    $contact->setNom($_POST['nom']);
+		    $contact->setPrenom($_POST['prenom']);
+		    $contact->setDateNaissance($_POST['dateNaissance']);
+		    $contact->setSouhait1($_POST['formation1']);
+		    $contact->setSouhait2($_POST['formation2']);
+		    $contact->setSouhait3($_POST['formation3']);
+		    $contact->setSite($_POST['campus']);
+		    $contact->setEmail($_POST['email']);
+		    $contact->setTel($_POST['tel']);
+
+
+			$message = $contact->save($pdo);
+
+			$campusRepo = new CampusRepository();
+			$listCampus = $campusRepo -> getAll($pdo);
+
+			$formationRepo = new FormationRepository();
+			$listFormation = $formationRepo -> getAll($pdo);
+
+			$vueAAfficher = "views/formEditContact.php";
+		}else {
+			header ('location:index.php');
+			exit();
+		}
+		break;
 
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
