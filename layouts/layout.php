@@ -23,7 +23,7 @@
 							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="">Accueil</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Formations</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#FDB515';" onmouseout="this.style.background='';this.style.color='';"><a href="">Calendrier</a></li>
-							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="">Candidater</a></li>
+							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="./index.php?action=candidater">Candidater</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Contact</a></li>
 						</ul>
 					</div>

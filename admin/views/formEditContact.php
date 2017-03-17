@@ -68,42 +68,39 @@
 	                                       <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 1</label>
-													<select class="form-control" name="formation1" >
-													<option><?php echo $contact->getSouhait1()->getNom() ?></option>
-													<?php foreach ($listFormation as $formation) { ?>
-													        <option value=<?php echo $formation->getId()?>>
-															      <?php echo $formation->getNom(); ?>
+													<select class="form-control" name="campus" >
+													<option><?php echo $contact->getSite()->getNom() ?></option>
+													<?php foreach ($listCampus as $campus ) { ?>
+													        <option value=<?php echo $campus->getId()?>>
+															      <?php echo $campus->getNom(); ?>
 															</option>
 													<?php } ?>
-													<option></option>
 													</select>
 												</div>
 	                                        </div>
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 2</label>
-													<select class="form-control" name="formation2" >
-													<option><?php echo $contact->getSouhait2()->getNom() ?></option>
-													<?php foreach ($listFormation as $formation) { ?>
-													        <option value=<?php echo $formation->getId()?>>
-															      <?php echo $formation->getNom(); ?>
+													<select class="form-control" name="campus" >
+													<option><?php echo $contact->getSite()->getNom() ?></option>
+													<?php foreach ($listCampus as $campus ) { ?>
+													        <option value=<?php echo $campus->getId()?>>
+															      <?php echo $campus->getNom(); ?>
 															</option>
 													<?php } ?>
-													<option></option>
 													</select>
 												</div>
 	                                        </div>
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Souhait Formation 3</label>
-													<select class="form-control" name="formation3" >
-													<option><?php echo $contact->getSouhait3()->getNom() ?></option>
-													<?php foreach ($listFormation as $formation) { ?>
-													        <option value=<?php echo $formation->getId()?>>
-															      <?php echo $formation->getNom(); ?>
+													<select class="form-control" name="campus" >
+													<option><?php echo $contact->getSite()->getNom() ?></option>
+													<?php foreach ($listCampus as $campus ) { ?>
+													        <option value=<?php echo $campus->getId()?>>
+															      <?php echo $campus->getNom(); ?>
 															</option>
 													<?php } ?>
-													<option></option>
 													</select>
 												</div>
 	                                        </div>
