@@ -30,7 +30,12 @@
       echo '<tr>';
       echo '<td><input type="checkbox" value=' . $contact->getId() .'></input></td>';
       echo '<td>' . $contact->getDateCreation() . '</td>';
-      echo '<td>' . $contact->getCivilite() . '</td>';
+      if($contact->getCivilite() ==1){            
+        echo '<td>Mr</td>';
+      }else{
+          echo '<td>Mme</td>';
+        }
+
       echo '<td>' . $contact->getNom() . '</td>';
       echo '<td>' . $contact->getPrenom() . '</td>';
       echo '<td>' . $contact->getDateNaissance() . '</td>';      

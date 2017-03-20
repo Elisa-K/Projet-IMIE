@@ -21,6 +21,7 @@ if (isset($_REQUEST['action'])) {
 }
 
 switch ($action) {
+
 	case "candidater":
 		$statutRepo = new StatutRepository();
 		$listStatut = $statutRepo -> getAll($pdo);
@@ -42,12 +43,7 @@ switch ($action) {
 		$contact->setCivilite($_POST["civ"]);
 		$contact->setNom($_POST["nom"]);
 		$contact->setPrenom($_POST["prenom"]);
-		$dateNaissance = $_POST["date_naissance"];
-
-		$objDate = DateTime::createFromFormat('d/m/Y', $dateNaissance);
-		$dateNaissance = $objDate->format("Y-m-d");
-
-		$contact->setDateNaissance($dateNaissance);
+		$contact->setDateNaissance($_POST["date_naissance"]);
 		$contact->setTel($_POST["tel"]);
 		$contact->setEmail($_POST["email"]);
 		$contact->setStatut($_POST["situation"]);
@@ -55,15 +51,24 @@ switch ($action) {
 		$contact->setEtabOrigine($_POST["nom_etab"]);
 		$contact->setDiplomeObtenu($_POST["nom_diplome"]);
 		$contact->setDisponibilite($_POST["dispo"]);
-		$contact->setSouhait1($_POST["souhaitFor1"]);
-		$contact->setSouhait2($_POST["souhaitFor2"]);
-		$contact->setSouhait3($_POST["souhaitFor3"]);
-		$contact->setCampus($_POST["campus"]);
+		$contact->setSouhait1($_POST["formation1"]);
+		$contact->setSouhait2($_POST["formation2"]);
+		$contact->setSouhait3($_POST["formation3"]);
+		$contact->setSite($_POST["campus"]);
 
 
-		//On prépare la vue à afficher ensuite
-		$message = $contact->save($pdo);
-		$vueAAfficher = "views/formAddClient.php";
+		$message = $contact->save($pdo, $_POST["formation2"], $_POST["formation3"]);
+
+		$statutRepo = new StatutRepository();
+		$listStatut = $statutRepo -> getAll($pdo);
+		
+		$formationRepo = new FormationRepository();
+		$listFormation = $formationRepo -> getAll($pdo);
+		
+		$campusRepo = new CampusRepository();
+		$listCampus = $campusRepo -> getAll($pdo);
+
+		$vueAAfficher = "views/candidater.php";
 		break;
 
 	default:

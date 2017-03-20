@@ -10,10 +10,18 @@
 	                            <div class="card-content">
 	                                <form action="./dashboard.php" method="POST">
 	                                    <div class="row">
-	                                        <div class="col-md-1">
+	                                        <div class="col-md-2">
 												<div class="form-group label-floating">
 													<label class="control-label">Civilité</label>
-													<input type="text" class="form-control" name="civ" value="<?php echo $contact->getCivilite() ?>">
+													<select class="form-control" name="civ">
+														<?php if ($contact->getCivilite() == 1){
+															echo '<option value="1">Mr</option>';
+															echo '<option value="2">Mme</option>';
+														}elseif ($contact->getCivilite() == 2){
+															echo '<option value="2">Mme</option>';
+															echo '<option value="1">Mr</option>';
+															} ?>
+													</select>
 												</div>
 	                                        </div>
 	                                        <div class="col-md-4">
@@ -22,7 +30,7 @@
 													<input type="text" class="form-control" name="nom" value="<?php echo $contact->getNom() ?>" >
 												</div>
 	                                        </div>
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-3">
 												<div class="form-group label-floating">
 													<label class="control-label">Prenom</label>
 													<input type="text" class="form-control" name="prenom" value="<?php echo $contact->getPrenom() ?>">
