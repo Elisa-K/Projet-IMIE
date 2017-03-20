@@ -20,11 +20,11 @@
 					</div>
 					<div class="collapse navbar-collapse col-xs-12 col-sm-12 col-md-12 col-lg-12" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">	
-							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="">Accueil</a></li>
+							<li class="li-nav" onmouseover="this.style.background='#48B9C7';this.style.borderRadius='10px 0 0 10px'" onmouseout="this.style.background='';this.style.color='';"><a href="./index.php">Accueil</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Formations</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#FDB515';" onmouseout="this.style.background='';this.style.color='';"><a href="">Calendrier</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="./index.php?action=candidater">Candidater</a></li>
-							<li class="li-nav" onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a href="">Contact</a></li>
+							<li class="li-nav" onmouseover="this.style.background='#E5324B';this.style.borderRadius='0 10px 10px 0'" onmouseout="this.style.background='';this.style.color='';"><a href="">Contact</a></li>
 						</ul>
 					</div>
 				</div>
