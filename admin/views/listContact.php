@@ -28,7 +28,7 @@
     <?php
     foreach ($listContact as $contact) {
       echo '<tr>';
-      echo '<td><input type="checkbox"></input></td>';
+      echo '<td><input type="checkbox" value=' . $contact->getId() .'></input></td>';
       echo '<td>' . $contact->getDateCreation() . '</td>';
       echo '<td>' . $contact->getCivilite() . '</td>';
       echo '<td>' . $contact->getNom() . '</td>';
@@ -44,6 +44,7 @@
     }
     ?>
   </tbody>
+  <label><?php if(isset($message)) echo $message ?></label>
 </table>
 
 </div>

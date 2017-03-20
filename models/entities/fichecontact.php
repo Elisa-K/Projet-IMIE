@@ -36,7 +36,7 @@ public function save($pdo, $formation2, $formation3) {
 private function update($pdo, $formation2, $formation3) {
 
     try {
-    	
+
     if(empty($formation2)){
     	$stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = NULL, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
@@ -94,6 +94,23 @@ private function update($pdo, $formation2, $formation3) {
     }
     catch(PDOException $e) {
       return "Votre mise à jour a échoué, en voici la raison : " . $e->getMessage();
+    }
+  }
+
+   public function delete($pdo) {
+
+    //Supprimer un enregistrement en base de donnée
+    //Faire un try catch qui renvoie un message pour indiquer si la suppression s'est bien déroulée ou non
+    try{
+      $stmt = $pdo->prepare('DELETE FROM fiche_contact WHERE id = :id');
+      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+
+      $stmt->execute();
+
+      return "Le contact a bien été supprimé.";
+    }
+    catch(PDOException $e) {
+      return "Votre suppression a échoué, en voici la raison : " . $e->getMessage();
     }
   }
 

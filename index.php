@@ -2,9 +2,11 @@
 <link rel="stylesheet" href="web/css/style.css"><!--notre style-->
 <?php
 include_once('library/PDOFactory.php');
+include_once('models/entities/fichecontact.php');
 include_once('models/entities/formation.php');
 include_once('models/entities/statut.php');
 include_once('models/entities/campusimie.php');
+include_once('models/repositories/ContactRepository.php');
 include_once('models/repositories/FormationRepository.php');
 include_once('models/repositories/StatutRepository.php');
 include_once('models/repositories/CampusRepository.php');
@@ -31,6 +33,39 @@ switch ($action) {
 		
 		$vueAAfficher = "views/candidater.php";
 		break;
+
+
+
+	case "addContact":
+
+		$contact = new FicheContact();
+		$contact->setCivilite($_POST["civ"]);
+		$contact->setNom($_POST["nom"]);
+		$contact->setPrenom($_POST["prenom"]);
+		$dateNaissance = $_POST["date_naissance"];
+
+		$objDate = DateTime::createFromFormat('d/m/Y', $dateNaissance);
+		$dateNaissance = $objDate->format("Y-m-d");
+
+		$contact->setDateNaissance($dateNaissance);
+		$contact->setTel($_POST["tel"]);
+		$contact->setEmail($_POST["email"]);
+		$contact->setStatut($_POST["situation"]);
+		$contact->setOrigineScolaire($_POST["nom_formation"]);
+		$contact->setEtabOrigine($_POST["nom_etab"]);
+		$contact->setDiplomeObtenu($_POST["nom_diplome"]);
+		$contact->setDisponibilite($_POST["dispo"]);
+		$contact->setSouhait1($_POST["souhaitFor1"]);
+		$contact->setSouhait2($_POST["souhaitFor2"]);
+		$contact->setSouhait3($_POST["souhaitFor3"]);
+		$contact->setCampus($_POST["campus"]);
+
+
+		//On prépare la vue à afficher ensuite
+		$message = $contact->save($pdo);
+		$vueAAfficher = "views/formAddClient.php";
+		break;
+
 	default:
 			$vueAAfficher = "views/accueil.php";
 		break;

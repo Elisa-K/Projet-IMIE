@@ -134,7 +134,22 @@ switch ($action) {
 			exit();
 		}
 		break;
+ 	case "deleteContact":
+	if(!empty($_SESSION['mail'])) {
+		$contact = new FicheContact();
+		$contact->setId($_GET['id']);
 
+		$message = $contact->delete($pdo);
+		$contactRepo = new ContactRepository();
+		$listContact = $contactRepo->getAll($pdo);
+		$nbFiches = $contactRepo -> getNb($pdo);
+		$vueAAfficher = "views/listContact.php";
+	}else {
+			header ('location:index.php');
+			exit();
+		}
+
+ 	break;
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
 			$vueAAfficher = "views/signin.php";
