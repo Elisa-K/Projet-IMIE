@@ -1,5 +1,5 @@
 /* Created by jankoatwarpspeed.com */
-
+/*
 (function($) {
     $.fn.formToWizard = function(options) {
         options = $.extend({  
@@ -70,4 +70,4 @@
         }
 
     }
-})(jQuery); 
+})(jQuery); */

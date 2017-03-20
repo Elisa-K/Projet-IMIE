@@ -1,4 +1,11 @@
-<form id="SignupForm" action="./index.php" method="POST">
+<div class="row">
+<form id="msform" action="./index.php" method="POST">
+	<ul id="progressbar">
+		<li class="active">Information personnelle</li>
+		<li>Situatuin en cours</li>
+		<li>Formation</li>
+	</ul>
+
         <fieldset>
 			<div class="row format-form">
 				<legend>Information personnelle</legend>
@@ -31,6 +38,7 @@
 					<br>
 				</div>
 			</diV>
+			<input type="button" name="next" class="next action-button" value="Next" />
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -68,6 +76,8 @@
 					<input name="dispo" type="radio" value="Autre">Autre
 				</div>
 			</div>
+			<input type="button" name="previous" class="previous action-button" value="Previous" />
+			<input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -75,7 +85,6 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formation-css">
 					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt :</label>
 					<select name="formation1">
-								<option value=""></option>
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
 									  <?php echo $formation->getNom(); ?>
@@ -116,9 +125,12 @@
 						</div>
 				</div>
 			</div>
+			<input type="button" name="previous" class="previous action-button" value="Previous" />
+			<input id="SaveAccount" type="submit" value="Submit form" />
+            <input type="hidden" name="action" value="addContact">
 		</fieldset>
 
-            <input id="SaveAccount" type="submit" value="Submit form" />
-            <input type="hidden" name="action" value="addContact">
+            
             <label><?php if(isset($message)) echo $message ?></label>
 </form>
+</div>
