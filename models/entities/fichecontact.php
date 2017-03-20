@@ -23,13 +23,12 @@ class FicheContact {
 
 public function save($pdo, $formation2, $formation3) {
     
-    //Si l'id est renseigné à l'appel de la méthode alors c'est une mise à jour, sinon $id équivaut à false et alors l'objet client actuel doit faire l'objet d'un nouvel enregistrement.
     if($this->id) {
       //appeler la bonne méthode
       $message = $this->update($pdo, $formation2, $formation3);
       return $message;
     } else {
-      $message = $this->insert($pdo);
+      $message = $this->insert($pdo, $formation2, $formation3);
       return $message;
     }
   }
@@ -41,7 +40,7 @@ private function update($pdo, $formation2, $formation3) {
     	$stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = NULL, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
     $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
       $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
       $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
@@ -55,7 +54,7 @@ private function update($pdo, $formation2, $formation3) {
       $stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = :formation2, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
       $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
       $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
@@ -70,8 +69,8 @@ private function update($pdo, $formation2, $formation3) {
       $stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = :formation2, id_formation_2 = :formation3, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
 
-       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
-      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_STR);
+      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
       $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
       $stmt->bindParam(':dateNaissance', $this->dateNaissance, PDO::PARAM_STR);
@@ -91,16 +90,16 @@ private function update($pdo, $formation2, $formation3) {
 
 
       return "Le contact a été mis à jour avec succès";
+      return $message;
     }
     catch(PDOException $e) {
       return "Votre mise à jour a échoué, en voici la raison : " . $e->getMessage();
+      return $message;
     }
   }
 
    public function delete($pdo) {
 
-    //Supprimer un enregistrement en base de donnée
-    //Faire un try catch qui renvoie un message pour indiquer si la suppression s'est bien déroulée ou non
     try{
       $stmt = $pdo->prepare('DELETE FROM fiche_contact WHERE id = :id');
       $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
@@ -112,6 +111,76 @@ private function update($pdo, $formation2, $formation3) {
     catch(PDOException $e) {
       return "Votre suppression a échoué, en voici la raison : " . $e->getMessage();
     }
+  }
+  private function insert($pdo, $formation2, $formation3) {
+
+    try {
+if(empty($formation2)){
+      $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, NULL, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
+      $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
+      $stmt->bindParam(':date_naissance', $this->dateNaissance, PDO::PARAM_STR);
+      $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
+      $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
+      $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
+      $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
+      $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
+      $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
+
+}elseif (empty($formation3)){
+
+	  $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
+      $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
+      $stmt->bindParam(':date_naissance', $this->dateNaissance, PDO::PARAM_STR);
+      $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
+      $stmt->bindParam(':formation2', $this->souhait2, PDO::PARAM_INT);
+      $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
+      $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
+      $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
+      $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
+      $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
+}else{
+	$stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, :formation3, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+
+      $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
+      $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+      $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
+      $stmt->bindParam(':date_naissance', $this->dateNaissance, PDO::PARAM_STR);
+      $stmt->bindParam(':formation1', $this->souhait1, PDO::PARAM_INT);
+      $stmt->bindParam(':formation2', $this->souhait2, PDO::PARAM_INT);
+      $stmt->bindParam(':formation3', $this->souhait2, PDO::PARAM_INT);
+      $stmt->bindParam(':campus', $this->site, PDO::PARAM_INT);
+      $stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+      $stmt->bindParam(':tel', $this->tel, PDO::PARAM_INT);
+      $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
+      $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+      $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
+      $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
+
+}
+      $stmt->execute();
+
+
+     $message = "Votre Fiche Contact a été enregistré avec succès";
+      return $message;
+    }
+    catch(PDOException $e) {
+      return "Votre enregistrement a échoué, en voici la raison : " . $e->getMessage();
+      return $message;
+    }
+
   }
 
 		public function getId() {

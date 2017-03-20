@@ -1,6 +1,6 @@
-<form id="SignupForm" action="">
-		<fieldset>
-			<div class="row format-form">
+<form id="SignupForm" action="./index.php" method="POST">
+        <fieldset>
+			<div class="row">
 				<legend>Information personnelle</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="civ">&lt Civilité /&gt :</label>
@@ -37,8 +37,7 @@
 				<legend>Situation en cours</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="situation">&lt Situation /&gt :</label>
-					<br>
-					<select name="form-control" id="situation">
+					<select name="situation">
 						<?php foreach ($listStatut as $statut) { ?>
 								<option value=<?php echo $statut->getId()?>>
 									  <?php echo $statut->getNom(); ?>
@@ -62,12 +61,11 @@
 					<br>
 					<label for="dispo">&lt Disponibilité /&gt :</label>
 					<br>
-					<input name="dispo" type="radio" value="1">Immédiate
+					<input name="dispo" type="radio" value="Immédiate">Immédiate
 					<br>
-					<input name="dispo" type="radio" value="2">Après la formation en cours
+					<input name="dispo" type="radio" value="Après la formation en cours">Après la formation en cours
 					<br>
-					<input name="dispo" type="radio">Autre
-					<input name="dispo" type="text">
+					<input name="dispo" type="radio" value="Autre">Autre
 				</div>
 			</div>
         </fieldset>
@@ -76,8 +74,7 @@
 				<legend>Formation</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formation-css">
 					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt :</label>
-					<br>
-					<select name="form-control" id="souhaitFor1">
+					<select name="formation1">
 								<option value=""></option>
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
@@ -87,8 +84,7 @@
 					</select>
 					<br>
 					<label for="souhaitFor2">&lt Souhait Formation 2 /&gt :</label>
-					<br>
-					<select name="form-control" id="souhaitFor2">
+					<select name="formation2">
 								<option value=""></option>
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
@@ -98,8 +94,7 @@
 					</select>
 					<br>
 					<label for="souhaitFor3">&lt Souhait Formation 3 /&gt :</label>
-					<br>
-					<select name="form-control" id="souhaitFor3">
+					<select name="formation3">
 								<option value=""></option>
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
@@ -123,11 +118,7 @@
 			</div>
 		</fieldset>
 
-		
-		
-		
-		<p>
-            <input id="SaveAccount" type="button" value="Submit form" />
+            <input id="SaveAccount" type="submit" value="Submit form" />
             <input type="hidden" name="action" value="addContact">
-        </p>
+            <label><?php if(isset($message)) echo $message ?></label>
 </form>
