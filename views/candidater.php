@@ -1,6 +1,6 @@
 <form id="SignupForm" action="./index.php" method="POST">
         <fieldset>
-			<div class="row">
+			<div class="row format-form">
 				<legend>Information personnelle</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="civ">&lt Civilité /&gt :</label>
