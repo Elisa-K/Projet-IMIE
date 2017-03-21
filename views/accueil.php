@@ -6,10 +6,10 @@
 
 <div class="row">
 	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-		<a href=""><img class="imgHome" src="web/img/porteOuverte.png" alt="portes ouvertes"/></a>
+		<a href="./index.php?action=agenda"><img class="imgHome" src="web/img/porteOuverte.png" alt="portes ouvertes"/></a>
 	</div>
 	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-		<a href=""><img class="imgHOME" src="web/img/decouvreForm.png" alt="info formation"/></a>
+		<a href="https://imie-ecole-informatique.fr/formations"><img class="imgHOME" src="web/img/decouvreForm.png" alt="info formation"/></a>
 	</div>
 </div>
 <div class="row">

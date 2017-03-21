@@ -71,6 +71,11 @@ switch ($action) {
 		$vueAAfficher = "views/candidater.php";
 		break;
 
+	case "agenda":
+		
+		$vueAAfficher = "views/calendrier.php";
+		break;
+	
 	default:
 			$vueAAfficher = "views/accueil.php";
 		break;

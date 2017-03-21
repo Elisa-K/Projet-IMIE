@@ -1,14 +1,13 @@
 <div class="row">
 <form id="msform" action="./index.php" method="POST">
 	<ul id="progressbar">
-		<li class="active">Information personnelle</li>
+		<li class="active">Informations personnelles</li>
 		<li>Situatuin en cours</li>
 		<li>Formation</li>
 	</ul>
 
         <fieldset>
 			<div class="row format-form">
-				<legend>Information personnelle</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="civ">&lt Civilité /&gt :</label>
 					<input name="civ" type="radio" value="1">Monsieur
@@ -38,11 +37,10 @@
 					<br>
 				</div>
 			</diV>
-			<input type="button" name="next" class="next action-button" value="Next" />
+			<input type="button" name="next" class="next action-button" value="Suivant" />
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">
-				<legend>Situation en cours</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="situation">&lt Situation /&gt :</label>
 					<select name="situation">
@@ -76,12 +74,11 @@
 					<input name="dispo" type="radio" value="Autre">Autre
 				</div>
 			</div>
-			<input type="button" name="previous" class="previous action-button" value="Previous" />
-			<input type="button" name="next" class="next action-button" value="Next" />
+			<input type="button" name="previous" class="previous action-button" value="Précédent" />
+			<input type="button" name="next" class="next action-button" value="Suivant" />
         </fieldset>
 		<fieldset>
 			<div class="row format-form">
-				<legend>Formation</legend>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formation-css">
 					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt :</label>
 					<select name="formation1">
@@ -125,8 +122,8 @@
 						</div>
 				</div>
 			</div>
-			<input type="button" name="previous" class="previous action-button" value="Previous" />
-			<input id="SaveAccount" type="submit" value="Submit form" />
+			<input type="button" name="previous" class="previous action-button" value="Précédent" />
+			<input id="SaveAccount" type="submit" value="Envoyer" />
             <input type="hidden" name="action" value="addContact">
 		</fieldset>
 
