@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="web/css/bootstrap.css"><!--css bootstrap-->
-<link rel="stylesheet" href="web/css/style.css"><!--notre style-->
+<link rel="stylesheet" href="web/css/style.css">
+<link rel="stylesheet" href="web/css/colorbox.css"><!--notre style-->
 <?php
 include_once('library/PDOFactory.php');
 include_once('models/entities/fichecontact.php');
@@ -109,3 +110,5 @@ include_once('layouts/layout.php');
 <script type="text/javascript" src="web/js/formToWizard.js"></script>
 <script src="web/js/jquery.easing/jquery.easing.1.3.min.js" type="text/javascript"></script>
 <script src="web/js/java.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="web/js/jquery.colorbox.js"></script>
