@@ -33,26 +33,7 @@ if (isset($_REQUEST['action'])) {
 	$action = null;
 
 }
-if (isset($_REQUEST['action2'])) {
-	$action2 = $_REQUEST['action2'];
 
-} else {
-	$action2 = null;
-
-}
-
-switch ($action2){
-	case "export":
-
-	if(!empty($_SESSION['mail'])) {
-			$contactRepo = new ContactRepository();
-			$export = $contactRepo -> export($pdo);
-
-			$vueAAfficher = "views/listContact.php";
-		}
-	
-	break;
-}
 switch ($action) {
 
 	case "verifLogin":
@@ -148,6 +129,7 @@ switch ($action) {
 			exit();
 		}
 		break;
+
  	case "deleteContact":
 	if(!empty($_SESSION['mail'])) {
 
@@ -161,6 +143,7 @@ switch ($action) {
 			}
 		}else{
 			$message = "Veuillez sélectionner une ou plusieurs fiches";
+		
 		}
 
 
@@ -174,6 +157,20 @@ switch ($action) {
 		}
 
  	break;
+
+ 	case "export":
+
+	if(!empty($_SESSION['mail'])) {
+			$tabId = $_POST['tabId'];
+			$id = implode(",", $tabId);
+			
+			$contactRepo = new ContactRepository();
+			$exportContact = $contactRepo -> export($pdo, $id);
+
+			$vueAAfficher = "views/listContact.php";
+		}
+	
+	break;
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
 			$vueAAfficher = "views/formAddAdmin.php";

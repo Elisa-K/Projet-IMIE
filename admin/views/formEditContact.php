@@ -83,6 +83,7 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+
 													</select>
 												</div>
 	                                        </div>
@@ -96,6 +97,7 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+													<option></option>
 													</select>
 												</div>
 	                                        </div>
@@ -109,6 +111,7 @@
 															      <?php echo $formation->getNom(); ?>
 															</option>
 													<?php } ?>
+													<option></option>
 													</select>
 												</div>
 	                                        </div>

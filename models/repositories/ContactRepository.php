@@ -109,7 +109,51 @@
 
     return $contact;
   }
-    public function export($pdo){
+    public function export($pdo, $id){
 
+$resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
+
+  $date = date('d-m-Y');
+
+
+  $chemin = '.././export/export-'.$date.'.csv';
+
+
+  $fp = fopen("$chemin", "w+");
+
+  $colonnes =["Y_identifant_site; Y_identifant_site2; Y_identifant_site3; identifiant_statut; Y_identifiant_annee; Y_Civilite_de_candidat; Y_Nom_de_candidat; ine_candidat; Y_Prenom_de_candidat; Nom_de_jeune_fille; Y_Nationalite_du_candidat; Y_1ère_ligne_de_l’adresse_«_courrier_»; 2ème_ligne_de_l’adresse_«_courrier_»; 3ème_ligne_de_l’adresse_«_courrier_»; 4ème_ligne_de_l’adresse_«_courrier_»; Y_Code_postal_de_l’adresse_«_courrier_»; Y_Ville_de_l’adresse_«_courrier_»; Pays_de_l’adresse_«_courrier_»; Y_Telephone_1_de_l’adresse_«_courrier_»; Telephone_2_de_l’adresse_«_courrier_»; Y_Email_de_l’adresse_«_courrier_»; cilivite_resp_legal; nom_resp_legal; prenom_resp_legal; 1ère_ligne_de_l’adresse_«_courrier_»; 2ème_ligne_de_l’adresse_«_courrier_»; 3ème_ligne_de_l’adresse_«_courrier_»; 4ème_ligne_de_l’adresse_«_courrier_»; Code_postal_de_l’adresse_«_courrier_»; Ville_de_l’adresse_«_courrier_»; Pays_de_l’adresse_«_courrier_»; Telephone_1_de_l’adresse_«_courrier_»; Telephone_2_de_l’adresse_«_courrier_»; Email_de_l’adresse_«_courrier_»; Y_date_naissance_candidat; Y_lieu_naiss_candidat; Y_departement_naiss_candidat; Y_premier_souhait; deuxieme_souhait; troisieme_souhait; Y_origine_scolaire; Y_dernier_diplome; etablissement_origine; date_saisie_formulaire; url_cv_candidat; url_lettre_motiv_candidat; observation; rp1; rp2; rp3; rp1_obs; rp2_obs; rp3_obs"];
+
+  foreach($colonnes as $entetes){
+
+    fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
+    fputs($fp, "$entetes;");
+  }
+
+  fputs($fp, "\n");
+
+  while($result = $resultat->fetch()){
+
+    $a = $result['code_campus'];
+    $b = $result['civilite'];
+    $c = $result['nom'];    
+    $d = $result['prenom'];
+    $e = $result['tel'];
+    $f = $result['email'];
+    $g = $result['date_naissance'];
+    $h = $result['souhait1'];
+    $i = $result['souhait2'];
+    $j = $result['souhait3'];
+    $k = $result['diplome_obtenu'];
+    $l = $result['etab_origine'];
+    $m = $result['date_formulaire'];
+    $n = $result['disponibilite'];
+
+    fputs($fp,"$a;;;;;$b;$c;;$d;;;;;;;;;;$e;;$f;;;;;;;;;;;;;;$g;;;$h;$i;$j;;$k;$l;$m;;;;;;;$n;;;\n");
+
+  }
+  fclose($fp);
+  $resultat->closeCursor();
 }
+
+
 }

@@ -13,14 +13,14 @@
     <input type="submit" value="Tout sélectionner" class="btn btn-default btn-round">
 
     <input type="submit" value="Supprimer" class="btn btn-default btn-round">
-    <input type="hidden"  name="action" value="deleteContact">
+<!--     <input type="hidden"  name="action" value="deleteContact"> -->
 
     <input type="submit" value="Exporter" class="btn btn-default btn-round">
     <input type="hidden" name="action2" value="export">
 
-
 <table class="table">
  
+
   <thead class="text-primary">
     <th></th>
     <th>Date Création</th>
