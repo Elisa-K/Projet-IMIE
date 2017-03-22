@@ -24,14 +24,8 @@ if (isset($_REQUEST['action'])) {
 } else {
 	$action = null;
 }
-if (!isset($_COOKIE['mail']) && !isset($_COOKIE['mdp'])) { 
-	$_SESSION['mail'] = $_COOKIE['login']; 
-	$_SESSION['mdp'] = $_COOKIE['mdp']; 
-header ('Location: dashboard.php'); 
-exit(); 
-} else{
-	$vue = "views/login.php";
-}
+
+
 
 
 switch ($action) {
@@ -47,12 +41,7 @@ switch ($action) {
 			$_SESSION['mdp'] = $admin->getMdp();
 			$_SESSION['id'] = $admin->getId();
 
-	if(isset($_POST['cookie'])){
-      setcookie('mail', $_SESSION['mail'], time()+365*24*3600);
-      setcookie('mdp', $_SESSION['mdp'], time()+365*24*3600);
-      		header ('location:dashboard.php');
-			exit();
-}
+	
 			//On prépare la vue à afficher avec les données dont elle a besoin
 			header ('location:dashboard.php');
 			exit();
@@ -68,7 +57,9 @@ switch ($action) {
 		if(empty($_SESSION['mail']) && empty($_SESSION['mdp'])) {
 			$vue = "views/login.php";
 		} else {
-			//On prépare la vue a afficher avec les données dont elle a besoin
+			$_SESSION = array();
+			session_destroy();
+			$vue = "views/login.php";
 
 			break;
 		}

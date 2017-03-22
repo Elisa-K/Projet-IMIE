@@ -57,6 +57,7 @@ switch ($action) {
 		$contact->setSouhait2($_POST["formation2"]);
 		$contact->setSouhait3($_POST["formation3"]);
 		$contact->setSite($_POST["campus"]);
+		$contact->setInfoImie($_POST["info_imie"]);
 
 
 		$message = $contact->save($pdo, $_POST["formation2"], $_POST["formation3"]);

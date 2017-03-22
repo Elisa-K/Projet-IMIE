@@ -2,7 +2,7 @@
 <form id="msform" action="./index.php" method="POST">
 	<ul id="progressbar">
 		<li class="active">Informations personnelles</li>
-		<li>Situatuin en cours</li>
+		<li>Situation en cours</li>
 		<li>Formation</li>
 	</ul>
 
@@ -120,6 +120,20 @@
 						</div>
 					<?php } ?>
 						</div>
+					<br>
+					<label for="info_imie">&lt Je connais l'IMIE &gt :</label>
+					<select name="info_imie">
+						<option value="site internet">Site internet</option>
+						<option value="evenement">Evénement</option>
+						<option value="affichage">Affichage</option>
+						<option value="presse">Presse</option>
+						<option value="radio">Radio</option>
+						<option value="cio/lycee">CIO/Lycée</option>
+						<option value="entreprise">Entreprise</option>
+						<option value="parents">Parents</option>
+						<option value="amis/bouche a oreille">Amis/bouche à oreille</option>
+					</select>
+					
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />

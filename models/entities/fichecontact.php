@@ -105,7 +105,7 @@ private function update($pdo, $formation2, $formation3) {
     			$stmt = $pdo->prepare('DELETE FROM fiche_contact WHERE id = ' .$id);
       			$stmt->bindParam($id, $this->id, PDO::PARAM_INT);
       			
-      			// $stmt->execute();
+      			$stmt->execute();
 
     		
 
@@ -120,7 +120,7 @@ private function update($pdo, $formation2, $formation3) {
 
     try {
 if(empty($formation2)){
-      $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, NULL, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+      $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, info_imie, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, NULL, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :info_imie, :nom_diplome, :dispo, NOW() )');
 
       $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
@@ -133,12 +133,13 @@ if(empty($formation2)){
       $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
       $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
       $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+	  $stmt->bindParam(':info_imie', $this->infoImie, PDO::PARAM_STR);
       $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
       $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
 
 }elseif (empty($formation3)){
 
-	  $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+	  $stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, info_imie, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, NULL, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :info_imie, :nom_diplome, :dispo, NOW() )');
 
       $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
@@ -152,10 +153,11 @@ if(empty($formation2)){
       $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
       $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
       $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+	  $stmt->bindParam(':info_imie', $this->infoImie, PDO::PARAM_STR);
       $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
       $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
 }else{
-	$stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, :formation3, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :nom_diplome, :dispo, NOW() )');
+	$stmt = $pdo->prepare('INSERT INTO fiche_contact (civilite, nom, prenom, date_naissance, id_formation, id_formation_1, id_formation_2, id_campus_imie, email, tel, id_statut, formation, etab_origine, info_imie, diplome_obtenu, disponibilite, date_formulaire) VALUES (:civ, :nom, :prenom, :date_naissance, :formation1, :formation2, :formation3, :campus, :email, :tel, :statut, :nom_formation, :nom_etab, :info_imie, :nom_diplome, :dispo, NOW() )');
 
       $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
@@ -170,6 +172,7 @@ if(empty($formation2)){
       $stmt->bindParam(':statut', $this->statut, PDO::PARAM_INT);
       $stmt->bindParam(':nom_formation', $this->origineScolaire, PDO::PARAM_STR);
       $stmt->bindParam(':nom_etab', $this->etabOrigine, PDO::PARAM_STR);
+	  $stmt->bindParam(':info_imie', $this->infoImie, PDO::PARAM_STR);
       $stmt->bindParam(':nom_diplome', $this->diplomeObtenu, PDO::PARAM_STR);
       $stmt->bindParam(':dispo', $this->disponibilite, PDO::PARAM_STR);
 
