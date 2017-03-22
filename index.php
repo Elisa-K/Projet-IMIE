@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="web/css/bootstrap.css"><!--css bootstrap-->
 <link rel="stylesheet" href="web/css/style.css">
 <link rel="stylesheet" href="web/css/colorbox.css"><!--notre style-->
+<link rel="stylesheet" href="web/css/slick.css">
 <?php
 include_once('library/PDOFactory.php');
 include_once('models/entities/fichecontact.php');
@@ -77,6 +78,12 @@ switch ($action) {
 		$vueAAfficher = "views/calendrier.php";
 		break;
 	
+	case "contact":
+	
+		$vueAAfficher = "views/contact.php";
+		break;
+	
+	
 	default:
 			$vueAAfficher = "views/accueil.php";
 		break;
@@ -107,8 +114,8 @@ include_once('layouts/layout.php');
 <script src="web/js/jquery-3.1.1.min.js"></script>
 <script src="web/js/bootstrap.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-<script type="text/javascript" src="web/js/formToWizard.js"></script>
-<script src="web/js/jquery.easing/jquery.easing.1.3.min.js" type="text/javascript"></script>
+<script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
 <script src="web/js/java.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="web/js/jquery.colorbox.js"></script>
+<script src="web/js/slick.min.js"></script>

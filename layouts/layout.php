@@ -24,7 +24,7 @@
 							<li class="li-nav" onmouseover="this.style.background='#E5324B';" onmouseout="this.style.background='';this.style.color='';"><a class='iframe' href="https://imie-ecole-informatique.fr/formations">Formations</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#FDB515';" onmouseout="this.style.background='';this.style.color='';"><a class='iframe' href="https://imie-ecole-informatique.fr/blog/journees-portes-ouvertes.html">Agenda</a></li>
 							<li class="li-nav" onmouseover="this.style.background='#48B9C7';" onmouseout="this.style.background='';this.style.color='';"><a href="./index.php?action=candidater">Candidater</a></li>
-							<li class="li-nav" onmouseover="this.style.background='#E5324B';this.style.borderRadius='0 10px 10px 0'" onmouseout="this.style.background='';this.style.color='';"><a href="">Contact</a></li>
+							<li class="li-nav" onmouseover="this.style.background='#E5324B';this.style.borderRadius='0 10px 10px 0'" onmouseout="this.style.background='';this.style.color='';"><a href="./index.php?action=contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>

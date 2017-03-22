@@ -1,4 +1,15 @@
 $(document).ready(function(){
+	
+	$('.slide-contact').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 3000,
+		arrows: false,
+	});
+	
+	
+	
 	//Examples of how to assign the Colorbox event to elements
 	$(".group1").colorbox({rel:'group1'});
 	$(".group2").colorbox({rel:'group2', transition:"fade"});

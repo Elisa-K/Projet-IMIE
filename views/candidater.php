@@ -9,15 +9,15 @@
         <fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="civ">&lt Civilité /&gt :</label>
-					<input name="civ" type="radio" value="1">Monsieur
+					<label for="civ">&lt Civilité /&gt * :</label>
+					<input name="civ" type="radio" value="1" required>Monsieur
 					<input name="civ" type="radio" value="2">Madame
 					<br>
-					<label for="nom">&lt Nom /&gt :</label>
+					<label for="nom">&lt Nom /&gt * :</label>
 					<br>
 					<input type="text" name="nom"/>
 					<br>
-					<label for="prenom">&lt Prénom /&gt :</label>
+					<label for="prenom">&lt Prénom /&gt * :</label>
 					<br>
 					<input type="text" name="prenom"/>
 					<br>
@@ -80,7 +80,7 @@
 		<fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formation-css">
-					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt :</label>
+					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt * :</label>
 					<select name="formation1">
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
