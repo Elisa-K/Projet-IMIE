@@ -28,10 +28,31 @@ $pdo = PDOFactory::getMysqlConnection();
 
 if (isset($_REQUEST['action'])) {
 	$action = $_REQUEST['action'];
+
 } else {
 	$action = null;
+
+}
+if (isset($_REQUEST['action2'])) {
+	$action2 = $_REQUEST['action2'];
+
+} else {
+	$action2 = null;
+
 }
 
+switch ($action2){
+	case "export":
+
+	if(!empty($_SESSION['mail'])) {
+			$contactRepo = new ContactRepository();
+			$export = $contactRepo -> export($pdo);
+
+			$vueAAfficher = "views/listContact.php";
+		}
+	
+	break;
+}
 switch ($action) {
 
 	case "verifLogin":
@@ -72,14 +93,7 @@ switch ($action) {
 		}
 		break;
 
-	case "export":
-	if(!empty($_SESSION['mail'])) {
-			$contactRepo = new ContactRepository();
-			$export = $contactRepo -> export($pdo);
 
-			$vueAAfficher = "views/listContact.php";
-		}
-	break;
 
 	case "formEditContact":
 		if(!empty($_SESSION['mail'])) {
@@ -136,10 +150,20 @@ switch ($action) {
 		break;
  	case "deleteContact":
 	if(!empty($_SESSION['mail'])) {
-		$contact = new FicheContact();
-		$contact->setId($_GET['id']);
 
-		$message = $contact->delete($pdo);
+		if(isset($_POST['tabId']) && !empty($_POST['tabId']) ){
+
+			for($i=0; $i<COUNT($_POST['tabId']);$i++){
+				$id = $_POST['tabId'][$i];
+				$contact = new FicheContact();
+				$contact->setId($id);
+				$message = $contact->delete($pdo, $id);
+			}
+		}else{
+			$message = "Veuillez sélectionner une ou plusieurs fiches";
+		}
+
+
 		$contactRepo = new ContactRepository();
 		$listContact = $contactRepo->getAll($pdo);
 		$nbFiches = $contactRepo -> getNb($pdo);
@@ -152,12 +176,35 @@ switch ($action) {
  	break;
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
-			$vueAAfficher = "views/signin.php";
+			$vueAAfficher = "views/formAddAdmin.php";
 		}else {
 			header ('location:index.php');
 			exit();
 		}
 		break;
+	case "addAdmin":
+		if(!empty($_SESSION['mail'])) {
+			if($_POST['mdp'] == $_POST['mdp2']){
+
+
+			$admin = new Admin();
+			$admin -> setNom($_POST['nom']);
+			$admin -> setPrenom($_POST['prenom']);
+			$admin -> setMail($_POST['email']);
+			$admin -> setMdp($_POST['mdp']);
+
+			$message = $admin->save($pdo);
+			$vueAAfficher = "views/formAddAdmin.php";
+
+			}else{
+				$message2 = "Mots de passe non identiques !";
+				$vueAAfficher = "views/formAddAdmin.php";
+			}
+		}else {
+			header ('location:index.php');
+			exit();
+		}
+	break;
 
 	default:
 		if(empty($_SESSION['mail'])) {

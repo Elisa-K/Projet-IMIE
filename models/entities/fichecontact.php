@@ -98,15 +98,19 @@ private function update($pdo, $formation2, $formation3) {
     }
   }
 
-   public function delete($pdo) {
+   public function delete($pdo, $id) {
 
     try{
-      $stmt = $pdo->prepare('DELETE FROM fiche_contact WHERE id = :id');
-      $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+    		
+    			$stmt = $pdo->prepare('DELETE FROM fiche_contact WHERE id = ' .$id);
+      			$stmt->bindParam($id, $this->id, PDO::PARAM_INT);
+      			
+      			// $stmt->execute();
 
-      $stmt->execute();
+    		
 
-      return "Le contact a bien été supprimé.";
+
+      return "Le(s) contact(s) a/ont bien été supprimé(s).";
     }
     catch(PDOException $e) {
       return "Votre suppression a échoué, en voici la raison : " . $e->getMessage();

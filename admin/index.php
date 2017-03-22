@@ -12,6 +12,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 <?php
 session_start();
+
 include_once('../library/PDOFactory.php');
 include_once('../models/entities/admin.php');
 include_once('../models/repositories/AdminRepository.php');
@@ -23,8 +24,15 @@ if (isset($_REQUEST['action'])) {
 } else {
 	$action = null;
 }
+if (!isset($_COOKIE['mail']) && !isset($_COOKIE['mdp'])) { 
+	$_SESSION['mail'] = $_COOKIE['login']; 
+	$_SESSION['mdp'] = $_COOKIE['mdp']; 
+header ('Location: dashboard.php'); 
+exit(); 
+} else{
+	$vue = "views/login.php";
+}
 
-$vue = "views/login.php";
 
 switch ($action) {
 
@@ -38,6 +46,13 @@ switch ($action) {
 			$_SESSION['prenom'] = $admin->getPrenom();
 			$_SESSION['mdp'] = $admin->getMdp();
 			$_SESSION['id'] = $admin->getId();
+
+	if(isset($_POST['cookie'])){
+      setcookie('mail', $_SESSION['mail'], time()+365*24*3600);
+      setcookie('mdp', $_SESSION['mdp'], time()+365*24*3600);
+      		header ('location:dashboard.php');
+			exit();
+}
 			//On prépare la vue à afficher avec les données dont elle a besoin
 			header ('location:dashboard.php');
 			exit();
