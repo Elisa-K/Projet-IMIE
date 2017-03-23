@@ -131,6 +131,7 @@ switch ($action) {
 		break;
 
  	case "deleteContact":
+
 	if(!empty($_SESSION['mail'])) {
 
 		if(isset($_POST['tabId']) && !empty($_POST['tabId']) ){
@@ -167,6 +168,10 @@ switch ($action) {
 			$contactRepo = new ContactRepository();
 			$exportContact = $contactRepo -> export($pdo, $id);
 
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+			$message3 = "L'exportation a été réalisé avec succès !";
 			$vueAAfficher = "views/listContact.php";
 		}
 	

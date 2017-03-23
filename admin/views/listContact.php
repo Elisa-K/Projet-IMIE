@@ -9,14 +9,14 @@
       </div>
 <div class="card-content table-responsive">
 <form  action="./dashboard.php" method="post">
+<input type="hidden" name="action">
 
     <input type="submit" value="Tout sélectionner" class="btn btn-default btn-round">
 
-    <input type="submit" value="Supprimer" class="btn btn-default btn-round">
-<!--     <input type="hidden"  name="action" value="deleteContact"> -->
+    <input type="submit" value="Supprimer" onclick="this.form.action.value='deleteContact';this.form.submit();" class="btn btn-default btn-round">
 
-    <input type="submit" value="Exporter" class="btn btn-default btn-round">
-    <input type="hidden" name="action2" value="export">
+    <input type="submit" value="Exporter" onclick="this.form.action.value='export';this.form.submit();" class="btn btn-default btn-round">
+
 
 <table class="table">
  
@@ -63,6 +63,7 @@
 
 
   <label><?php if(isset($message)) echo $message ?></label>
+  <label><?php if(isset($message3)) echo $message3 ?></label>
 </table>
 
 </form>

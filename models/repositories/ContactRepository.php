@@ -153,6 +153,10 @@ $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.d
   }
   fclose($fp);
   $resultat->closeCursor();
+
+  $message3 = "L'exportation à été réalisé avec succés !";
+  return $message3;
+
 }
 
 
