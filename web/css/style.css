@@ -210,7 +210,8 @@ nav li{
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
-	height:125%;
+	height:650px;
+	min-width:400px;
 }
 #msform fieldset {
 	background: white;

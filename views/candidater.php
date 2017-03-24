@@ -1,3 +1,4 @@
+<script src="web/js/formulaire.js"></script>
 <div class="row">
 <form id="msform" action="./index.php" method="POST">
             <label><?php if(isset($message)) echo $message ?></label>
@@ -19,11 +20,11 @@
 					<br>
 					<label for="nom">&lt Nom /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="nom"/>
+					<input type="text" name="nom" onblur="verifNom(this)"/>
 					<br>
 					<label for="prenom">&lt Prénom /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="prenom"/>
+					<input type="text" name="prenom" onblur="verifPrenom(this)"/>
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -41,7 +42,7 @@
 					<br>
 				</div>
 			</diV>
-			<input type="button" name="next" class="next action-button" value="Suivant" />
+			<input type="button" name="next" class="next action-button" value="Suivant"/>
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -149,4 +150,7 @@
             
 
 </form>
+</div>
+<div class="row">
+<div class="col-sm-12"><p>* indique un champ obligatoire</p></div>
 </div>
