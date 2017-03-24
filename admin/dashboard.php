@@ -11,6 +11,8 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+
 <?php
 session_start();
 include_once('../library/PDOFactory.php');
@@ -162,6 +164,7 @@ switch ($action) {
  	case "export":
 
 	if(!empty($_SESSION['mail'])) {
+		if(isset($_POST['tabId']) && !empty($_POST['tabId']) ){
 			$tabId = $_POST['tabId'];
 			$id = implode(",", $tabId);
 			
@@ -171,8 +174,17 @@ switch ($action) {
 			$contactRepo = new ContactRepository();
 			$listContact = $contactRepo -> getAll($pdo);
 			$nbFiches = $contactRepo -> getNb($pdo);
-			$message3 = "L'exportation a été réalisé avec succès !";
+
+			$message = "L'exportation a été réalisé avec succès !";
 			$vueAAfficher = "views/listContact.php";
+
+		}else{
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+			$message = "Veuillez sélectionner une ou plusieurs fiches";
+			$vueAAfficher = "views/listContact.php";
+		}
 		}
 	
 	break;
@@ -207,7 +219,47 @@ switch ($action) {
 			exit();
 		}
 	break;
+	case "recherche":
+		if(!empty($_SESSION['mail'])) {
 
+			$campusRepo = new CampusRepository();
+			$listCampus = $campusRepo -> getAll($pdo);
+
+			$formationRepo = new FormationRepository();
+			$listFormation = $formationRepo -> getAll($pdo);
+
+			$vueAAfficher = "views/recherche.php";
+		}else {
+			header ('location:index.php');
+			exit();
+		}
+		break;
+	case "resultatRecherche":
+		if(!empty($_SESSION['mail'])) {
+if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance"]) || !empty($_POST["creation"]) || !empty($_POST["campus"]) || !empty($_POST["formation1"]) ){
+
+		$nom = $_POST["nom"];
+		$prenom = $_POST["prenom"];
+		$naissance = $_POST["naissance"];
+		$creation = $_POST["creation"];
+		$campus = $_POST["campus"];
+		$formation1 = $_POST["formation1"];
+
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo->search($pdo, $nom, $prenom, $naissance, $creation, $campus, $formation1);
+
+			$campusRepo = new CampusRepository();
+			$listCampus = $campusRepo -> getAll($pdo);
+
+			$formationRepo = new FormationRepository();
+			$listFormation = $formationRepo -> getAll($pdo);
+
+			
+			$vueAAfficher = "views/recherche.php";
+}
+
+}
+	break;
 	default:
 		if(empty($_SESSION['mail'])) {
 			$vue = "views/login.php";
@@ -240,6 +292,7 @@ switch ($action) {
 
 ?>
 	<!--   Core JS Files   -->
+
 	<script src="web/js/jquery-3.1.0.min.js" type="text/javascript"></script>
 	<script src="web/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="web/js/material.min.js" type="text/javascript"></script>
@@ -256,11 +309,21 @@ switch ($action) {
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="web/js/demo.js"></script>
 
+<script type="text/javascript" src="web/js/jquery-latest.js"></script> 
+<script type="text/javascript" src="web/js/jquery.tablesorter.js"></script> 
+
 	<script type="text/javascript">
+	    $(document).ready(function() 
+    { 
+        $("#table").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+); 
     	$(document).ready(function(){
 
 			// Javascript method's body can be found in assets/js/demos.js
         	demo.initDashboardPageCharts();
 
     	});
+
+
 	</script>

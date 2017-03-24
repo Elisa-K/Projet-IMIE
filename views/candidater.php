@@ -1,5 +1,6 @@
 <div class="row">
 <form id="msform" action="./index.php" method="POST">
+            <label><?php if(isset($message)) echo $message ?></label>
 	<ul id="progressbar">
 		<li class="active">Informations personnelles</li>
 		<li>Situation en cours</li>
@@ -9,29 +10,32 @@
         <fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="civ">&lt Civilité /&gt * :</label>
+					<label for="civ">&lt Civilité /&gt <em>*</em> :</label>
+					<br>
+					<div class="civilite">
 					<input name="civ" type="radio" value="1" required>Monsieur
 					<input name="civ" type="radio" value="2">Madame
+					</div>
 					<br>
-					<label for="nom">&lt Nom /&gt * :</label>
+					<label for="nom">&lt Nom /&gt <em>*</em> :</label>
 					<br>
 					<input type="text" name="nom"/>
 					<br>
-					<label for="prenom">&lt Prénom /&gt * :</label>
+					<label for="prenom">&lt Prénom /&gt <em>*</em> :</label>
 					<br>
 					<input type="text" name="prenom"/>
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="date_naissance">&lt Date de naissance /&gt :</label>
+					<label for="date_naissance">&lt Date de naissance /&gt <em>*</em> :</label>
 					<br>
 					<input type="date" name="date_naissance"/>
 					<br>
-					<label for="tel">&lt Téléphone /&gt :</label>
+					<label for="tel">&lt Téléphone /&gt <em>*</em> :</label>
 					<br>
 					<input type="number" name="tel"/>
 					<br>
-					<label for="email">&lt E-mail /&gt :</label>
+					<label for="email">&lt E-mail /&gt <em>*</em> :</label>
 					<br>
 					<input type="text" name="email"/>
 					<br>
@@ -42,7 +46,8 @@
 		<fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="situation">&lt Situation /&gt :</label>
+					<label for="situation">&lt Situation /&gt <em>*</em> :</label>
+					<br>
 					<select name="situation">
 						<?php foreach ($listStatut as $statut) { ?>
 								<option value=<?php echo $statut->getId()?>>
@@ -61,11 +66,11 @@
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="nom">&lt Dernier diplôme obtenu /&gt :</label>
+					<label for="nom">&lt Dernier diplôme obtenu /&gt <em>*</em> :</label>
 					<br>
 					<input type="text" name="nom_diplome"/>
 					<br>
-					<label for="dispo">&lt Disponibilité /&gt :</label>
+					<label for="dispo">&lt Disponibilité /&gt <em>*</em> :</label>
 					<br>
 					<input name="dispo" type="radio" value="Immédiate">Immédiate
 					<br>
@@ -80,7 +85,7 @@
 		<fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formation-css">
-					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt * :</label>
+					<label for="souhaitFor1">&lt Souhait Formation 1 /&gt <em>*</em> :</label>
 					<select name="formation1">
 						<?php foreach ($listFormation as $formation) { ?>
 								<option value=<?php echo $formation->getId()?>>
@@ -111,7 +116,7 @@
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="campus" style="margin-bottom: 0px">&lt Campus &gt :</label>
+					<label for="campus" style="margin-bottom: 0px">&lt Campus &gt <em>*</em> :</label>
 					<br>
 						<div class="row" style="padding: 0px">
 					<?php foreach ($listCampus as $campus) { ?>
@@ -142,6 +147,6 @@
 		</fieldset>
 
             
-            <label><?php if(isset($message)) echo $message ?></label>
+
 </form>
 </div>

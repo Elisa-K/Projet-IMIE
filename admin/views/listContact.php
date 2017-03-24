@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-12">
 
@@ -18,20 +19,20 @@
     <input type="submit" value="Exporter" onclick="this.form.action.value='export';this.form.submit();" class="btn btn-default btn-round">
 
 
-<table class="table">
+<table class="table" id="table">
  
 
   <thead class="text-primary">
     <th></th>
-    <th>Date Création</th>
-    <th>Civilité</th>
-    <th>Nom</th>
-    <th>Prénom</th>
-    <th>Date de Naissance</th>
-    <th>Souhait Campus</th>
-    <th>Souhait Formation</th>
-    <th>Mail</th>
-    <th>Téléphone</th>
+    <th>Date Création <i class="material-icons">swap_vert</i></th>
+    <th>Civilité <i class="material-icons">swap_vert</i></th>
+    <th>Nom <i class="material-icons">swap_vert</i></th>
+    <th>Prénom <i class="material-icons">swap_vert</i></th>
+    <th>Date de Naissance <i class="material-icons">swap_vert</i></th>
+    <th>Souhait Campus <i class="material-icons">swap_vert</i></th>
+    <th>Souhait Formation <i class="material-icons">swap_vert</i></th>
+    <th>Mail <i class="material-icons">swap_vert</i></th>
+    <th>Téléphone <i class="material-icons">swap_vert</i></th>
     <th>Editer</th>
   </thead>
   <tbody>
@@ -39,7 +40,7 @@
   
     foreach ($listContact as $contact) {
       echo '<tr>';
-      echo '<td><div class="checkbox"><label><input type="checkbox" class="check" name="tabId[]" value=' . $contact->getId() .'></input></label></div></td>';
+      echo '<td><label><input type="checkbox"  name="tabId[]" value=' . $contact->getId() .'></input></label></td>';
       echo '<td>' . $contact->getDateCreation() . '</td>';
       if($contact->getCivilite() ==1){            
         echo '<td>Mr</td>';
@@ -63,12 +64,13 @@
 
 
   <label><?php if(isset($message)) echo $message ?></label>
-  <label><?php if(isset($message3)) echo $message3 ?></label>
+
 </table>
 
 </form>
 </div>
 </div>
-  <input type="button" value="Exporter">
+
 </div>
 </div>
+

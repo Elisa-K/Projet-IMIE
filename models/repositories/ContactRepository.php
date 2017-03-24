@@ -5,19 +5,13 @@
   class ContactRepository
   {
 
-    //Récupère les clients en base de données
     public function getAll($pdo){
 
-      //Effectuer la requête en bbd pour récupérer la
+     
       $req = $pdo->query("SELECT id, civilite, nom, prenom, email, tel, id_campus_imie, id_formation, DATE_FORMAT(date_naissance, GET_FORMAT(DATE, 'EUR')) AS dateNaissance, DATE_FORMAT(date_formulaire, GET_FORMAT(DATE, 'EUR')) AS dateFormulaire FROM fiche_contact");
 
       $req->setFetchMode(PDO::FETCH_OBJ);
 
-      //Boucler sur tous les enregistrements récupérés grâce à votre requête SELECT
-      // 1 -  instancier un objet client
-      // 2 -  lui hydrater ses attributs avec les valeurs récupérés en bdd
-      // 3 -  pour chaque onjet client instanciés et hydratés, les ajouter dans un tableau
-      // 4 - retourner ensuite ce tableau avec l'instruction return;
 
       $listContact = array();
 
@@ -159,5 +153,65 @@ $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.d
 
 }
 
+public function search($pdo, $nom, $prenom, $naissance, $creation, $campus, $formation1){
+
+$req = 'SELECT id, civilite, nom, prenom, email, tel, id_campus_imie, id_formation, DATE_FORMAT(date_naissance, GET_FORMAT(DATE, "EUR")) AS dateNaissance, DATE_FORMAT(date_formulaire, GET_FORMAT(DATE, "EUR")) AS dateFormulaire FROM fiche_contact WHERE ';
+
+
+
+if ($nom) $req .= 'nom LIKE "%' . $nom . '%" AND ';
+if ($prenom) $req .= 'prenom LIKE "%' . $prenom . '%" AND ';
+if ($naissance) $req .= 'YEAR(date_naissance)=' . $naissance . ' AND ';
+if ($creation) $req .= 'date_formulaire ="' . $creation . '" AND ';
+if ($campus) $req .= 'id_campus_imie =' . $campus . ' AND ';
+if ($formation1) $req .= 'id_formation =' . $formation1 . ' AND ';
+
+
+$req = substr($req, 0, strlen($req)-5);
+$nbLigneAffectees = $pdo->query($req);
+
+
+$nbLigneAffectees->setFetchMode(PDO::FETCH_OBJ);
+
+$listContact = array();
+
+      while ($obj = $nbLigneAffectees->fetch()){
+
+        $idCampus = $obj->id_campus_imie;
+        $idFormation = $obj->id_formation;
+
+
+
+        $res = $pdo->query("SELECT nom FROM campus_imie WHERE id =" . $idCampus);
+          $res->setFetchMode(PDO::FETCH_OBJ);
+          $obj2 = $res->fetch();
+          $obj3 = $obj2->nom;
+
+        $res2 = $pdo->query("SELECT nom FROM formation WHERE id =" . $idFormation);
+          $res2->setFetchMode(PDO::FETCH_OBJ);
+          $obj4 = $res2->fetch();
+          $obj5 = $obj4->nom;
+
+        $contact = new FicheContact();
+        $contact->setId($obj->id);
+        $contact->setCivilite($obj->civilite);
+        $contact->setPrenom($obj->prenom);
+        $contact->setDateNaissance($obj->dateNaissance);
+        $contact->setDateCreation($obj->dateFormulaire);
+        $contact->setNom($obj->nom);
+        $contact->setEmail($obj->email);
+        $contact->setTel($obj->tel);
+        $contact->setSite($obj3);
+        $contact->setSouhait1($obj5);
+
+
+        $listContact[] = $contact;
+
+
+      }
+
+      return $listContact;
+
+}
 
 }

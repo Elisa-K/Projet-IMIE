@@ -32,6 +32,7 @@ public function save($pdo, $formation2, $formation3) {
       return $message;
     }
   }
+
 private function update($pdo, $formation2, $formation3) {
 
     try {
@@ -39,7 +40,7 @@ private function update($pdo, $formation2, $formation3) {
     if(empty($formation2)){
     	$stmt = $pdo->prepare('UPDATE fiche_contact SET civilite = :civ, nom = :nom, prenom = :prenom, date_naissance = :dateNaissance, id_formation = :formation1, id_formation_1 = NULL, id_formation_2 = NULL, id_campus_imie = :campus, email = :email, tel = :tel WHERE id = :id');
 
-    $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+	  $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
       $stmt->bindParam(':civ', $this->civilite, PDO::PARAM_INT);
       $stmt->bindParam(':nom', $this->nom, PDO::PARAM_STR);
       $stmt->bindParam(':prenom', $this->prenom, PDO::PARAM_STR);
