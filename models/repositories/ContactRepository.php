@@ -108,9 +108,10 @@
 $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
 
   $date = date('d-m-Y');
+  $heure =date('H-i');
+  $objDate =''.$date.'-'.$heure.'';
 
-
-  $chemin = '.././export/export-'.$date.'.csv';
+  $chemin = '.././export/export-'.$objDate.'.csv';
 
 
   $fp = fopen("$chemin", "w+");
@@ -150,6 +151,93 @@ $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.d
 
   $message3 = "L'exportation à été réalisé avec succés !";
   return $message3;
+
+}
+public function sendMail(){
+
+
+$mail = 'elisaklein66@gmail.com'; // Déclaration de l'adresse de destination.
+if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui présentent des bogues.
+{
+  $passage_ligne = "\r\n";
+}
+else
+{
+  $passage_ligne = "\n";
+}
+//=====Déclaration des messages au format texte et au format HTML.
+$message_txt = "Ci-joint l'export des fiches contacts";
+$message_html = "<html><head></head><body>Ci-joint l'export des fiches contacts</body></html>";
+//==========
+ 
+//=====Lecture et mise en forme de la pièce jointe.
+  $date = date('d-m-Y');
+  $heure =date('H-i');
+  $objDate =''.$date.'-'.$heure.'';
+
+  $chemin = '.././export/export-'.$objDate.'.csv';
+
+$fichier   = fopen($chemin, "r");
+$attachement = fread($fichier, filesize($chemin));
+$attachement = chunk_split(base64_encode($attachement));
+fclose($fichier);
+//==========
+ 
+//=====Création de la boundary.
+$boundary = "-----=".md5(rand());
+$boundary_alt = "-----=".md5(rand());
+//==========
+ 
+//=====Définition du sujet.
+$sujet = "Export csv fiches contacts";
+//=========
+ 
+//=====Création du header de l'e-mail.
+$header = "From: \"WeaponsB\"<weaponsb@mail.fr>".$passage_ligne;
+$header.= "Reply-to: \"WeaponsB\" <weaponsb@mail.fr>".$passage_ligne;
+$header.= "MIME-Version: 1.0".$passage_ligne;
+$header.= "Content-Type: multipart/mixed;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+//==========
+ 
+//=====Création du message.
+$message = $passage_ligne."--".$boundary.$passage_ligne;
+$message.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary_alt\"".$passage_ligne;
+$message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+//=====Ajout du message au format texte.
+$message.= "Content-Type: text/plain; charset=\"ISO-8859-1\"".$passage_ligne;
+$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+$message.= $passage_ligne.$message_txt.$passage_ligne;
+//==========
+ 
+$message.= $passage_ligne."--".$boundary_alt.$passage_ligne;
+ 
+//=====Ajout du message au format HTML.
+$message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
+$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+$message.= $passage_ligne.$message_html.$passage_ligne;
+//==========
+ 
+//=====On ferme la boundary alternative.
+$message.= $passage_ligne."--".$boundary_alt."--".$passage_ligne;
+//==========
+ 
+ 
+ 
+$message.= $passage_ligne."--".$boundary.$passage_ligne;
+ 
+//=====Ajout de la pièce jointe.
+$message.= "Content-Type: text/csv; name=\"export.csv\"".$passage_ligne;
+$message.= "Content-Transfer-Encoding: base64".$passage_ligne;
+$message.= "Content-Disposition: attachment; filename=\"export.csv\"".$passage_ligne;
+$message.= $passage_ligne.$attachement.$passage_ligne.$passage_ligne;
+$message.= $passage_ligne."--".$boundary."--".$passage_ligne; 
+//========== 
+//=====Envoi de l'e-mail.
+mail($mail,$sujet,$message,$header);
+ 
+
+
+ 
 
 }
 

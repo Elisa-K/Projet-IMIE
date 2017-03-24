@@ -31,9 +31,9 @@ if (isset($_REQUEST['action'])) {
 switch ($action) {
 
 	case "verifLogin":
+
 		$adminRepo = new AdminRepository();
 		$admin = $adminRepo->getAdmin($pdo, $_POST['mail'], $_POST['mdp']);
-
 		if($admin) {
 			$_SESSION['mail'] = $admin->getMail();
 			$_SESSION['nom'] = $admin->getNom();

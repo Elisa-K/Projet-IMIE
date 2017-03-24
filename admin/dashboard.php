@@ -186,6 +186,35 @@ switch ($action) {
 		}
 	
 	break;
+
+ 	case "mailExport":
+
+	if(!empty($_SESSION['mail'])) {
+		if(isset($_POST['tabId']) && !empty($_POST['tabId']) ){
+			$tabId = $_POST['tabId'];
+			$id = implode(",", $tabId);
+			
+			$contactRepo = new ContactRepository();
+			$exportContact = $contactRepo -> export($pdo, $id);
+			$exportContact = $contactRepo -> sendMail();
+
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+
+			$message = "L'exportation a été réalisé avec succès !";
+			$vueAAfficher = "views/listContact.php";
+
+		}else{
+			$contactRepo = new ContactRepository();
+			$listContact = $contactRepo -> getAll($pdo);
+			$nbFiches = $contactRepo -> getNb($pdo);
+			$message = "Veuillez sélectionner une ou plusieurs fiches";
+			$vueAAfficher = "views/listContact.php";
+		}
+		}
+	
+	break;
 	case "signin":
 		if(!empty($_SESSION['mail'])) {
 			$vueAAfficher = "views/formAddAdmin.php";
@@ -295,8 +324,8 @@ if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance
 	<script src="web/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="web/js/material.min.js" type="text/javascript"></script>
 
-	<!--  Charts Plugin -->
-	<script src="web/js/chartist.min.js"></script>
+
+
 
 	<!--  Notifications Plugin    -->
 	<script src="web/js/bootstrap-notify.js"></script>
@@ -304,8 +333,6 @@ if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance
 	<!-- Material Dashboard javascript methods -->
 	<script src="web/js/material-dashboard.js"></script>
 
-	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	<script src="web/js/demo.js"></script>
 	<script src="web/js/java.js"></script>
 
 <script type="text/javascript" src="web/js/jquery-latest.js"></script> 

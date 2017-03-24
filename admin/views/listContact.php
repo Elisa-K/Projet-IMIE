@@ -17,7 +17,7 @@
     <input type="submit" value="Supprimer" onclick="this.form.action.value='deleteContact';this.form.submit();" class="btn btn-default btn-round">
 
     <input type="submit" value="Exporter" onclick="this.form.action.value='export';this.form.submit();" class="btn btn-default btn-round">
-
+    <input type="submit" value="Envoyer par mail" onclick="this.form.action.value='mailExport';this.form.submit();" class="btn btn-default btn-round">
 
 <table class="table" id="table">
  
