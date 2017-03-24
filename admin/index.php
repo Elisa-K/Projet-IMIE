@@ -98,8 +98,6 @@ switch ($action) {
 
 	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
 	<script src="web/js/demo.js"></script>
-
-	<script type="text/javascript">
     	$(document).ready(function(){
 
 			// Javascript method's body can be found in assets/js/demos.js

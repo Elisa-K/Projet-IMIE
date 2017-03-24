@@ -11,8 +11,12 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
 
 
+=======
+	<script src="web/js/java.js"></script>
+>>>>>>> 57e95f6c854e78f9ecf62f4ab990a0a99f2b98b3
 <?php
 session_start();
 include_once('../library/PDOFactory.php');
