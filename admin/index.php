@@ -95,7 +95,3 @@ switch ($action) {
 
 	<!-- Material Dashboard javascript methods -->
 	<script src="web/js/material-dashboard.js"></script>
-
-	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	<script src="web/js/demo.js">
-	</script>
