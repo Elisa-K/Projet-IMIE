@@ -12,8 +12,8 @@
 <form  action="./dashboard.php" method="post">
 <input type="hidden" name="action">
 
-    <input type="submit" value="select" id="selectAll" class="btn btn-default btn-round" onclick="do_this()">
-
+	<input type="button" id="toggle" value="Sélectionner" class="btn btn-default btn-round" onClick="select_all()" />
+	
     <input type="submit" value="Supprimer" onclick="this.form.action.value='deleteContact';this.form.submit();" class="btn btn-default btn-round">
 
     <input type="submit" value="Exporter" onclick="this.form.action.value='export';this.form.submit();" class="btn btn-default btn-round">
