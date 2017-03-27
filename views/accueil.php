@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-		<a href="./index.php?action=agenda"><img class="imgHome" src="web/img/porteOuverte.png" alt="portes ouvertes"/></a>
+		<a class='iframe' href="https://imie-ecole-informatique.fr/blog/journees-portes-ouvertes.html"><img class="imgHome" src="web/img/porteOuverte.png" alt="portes ouvertes"/></a>
 	</div>
 	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 		<a class='iframe' href="https://imie-ecole-informatique.fr/formations"><img class="imgHOME" src="web/img/decouvreForm.png" alt="info formation"/></a>
@@ -14,7 +14,7 @@
 </div>
 <div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<iframe width="100%" height="315" src="https://www.youtube.com/embed/btVZ0q0TSYA" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="315" src="https://www.youtube.com/embed/0q8_lVNu0rI" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 		<div id="fb-root"></div>

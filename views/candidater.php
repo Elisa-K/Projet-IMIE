@@ -11,38 +11,38 @@
         <fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="civ">&lt Civilité /&gt <em>*</em> :</label>
+					<label for="civ" id="civ">&lt Civilité /&gt <em>*</em> :</label>
 					<br>
 					<div class="civilite">
-					<input name="civ" type="radio" value="1" onblur="verifCiv(this)" required>Monsieur
+					<input name="civ" type="radio" value="1" onblur="verifCiv(this)">Monsieur
 					<input name="civ" type="radio" value="2" onblur="verifCiv(this)">Madame
 					</div>
 					<br>
 					<label for="nom">&lt Nom /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="nom" onblur="verifNom(this)"/>
+					<input type="text" name="nom" id="nom" onblur="verifNom(this)"/>
 					<br>
 					<label for="prenom">&lt Prénom /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="prenom" onblur="verifPrenom(this)"/>
+					<input type="text" name="prenom" id="prenom" onblur="verifPrenom(this)"/>
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="date_naissance">&lt Date de naissance /&gt <em>*</em> :</label>
 					<br>
-					<input type="date" name="date_naissance" onblur="verifNais(this)"/>
+					<input type="date" name="date_naissance" id="date_naissance" onblur="verifNais(this)"/>
 					<br>
 					<label for="tel">&lt Téléphone /&gt <em>*</em> :</label>
 					<br>
-					<input type="tel" name="tel" onblur="verifTel(this)"/>
+					<input type="tel" name="tel" id="tel" onblur="verifTel(this)"/>
 					<br>
 					<label for="email">&lt E-mail /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="email" onblur="verifEmail(this)"/>
+					<input type="text" name="email" id="email" onblur="verifEmail(this)"/>
 					<br>
 				</div>
 			</diV>
-			<input type="button" name="next" class="nxt action-button" onblur="verifPage1()" value="Suivant"/>
+			<input type="button" name="next" class="nxt action-button" onclick="" value="Suivant"/>
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">

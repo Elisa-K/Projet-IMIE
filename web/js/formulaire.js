@@ -91,9 +91,14 @@ function verifEmail(champ)
 };
 
 function verifPage1(){
+	verifCiv(civ); verifEmail(email); verifNais(date_naissance); verifNom(nom); verifPrenom(prenom); verifTel(tel);
+	
 	if(verifCiv && verifEmail && verifNais && verifNom && verifPrenom && verifTel != true){
+		console.log([verifCiv && verifEmail && verifNais && verifNom && verifPrenom && verifTel]);
+		alert(1);
 		return false;
 	}else{
+		alert(2);
 	if(animating) return false;
 	animating = true;
 	
