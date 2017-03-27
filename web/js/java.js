@@ -161,3 +161,12 @@ var popup = (function()
  
 })();
 });
+
+
+function afficherAutre() {
+	document.getElementbyId("autre").style.display='inline';
+}
+
+function cacherAutre() {
+	document.getElementbyId("autre").style.display='none';
+}
