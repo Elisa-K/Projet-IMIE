@@ -1,3 +1,13 @@
+/*Case autre (disponibilité)*/
+
+function afficherAutre() {
+	document.getElementbyId("autre").style.display='inline';
+}
+
+function cacherAutre() {
+	document.getElementbyId("autre").style.display='none';
+}
+
 /*changement couleur*/
 function surligne(champ, erreur){
    if(erreur)

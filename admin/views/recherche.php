@@ -9,7 +9,7 @@
       </div>
 <div class="card-content table-responsive">
 <form  action="./dashboard.php" method="post">
-
+ <label><?php if(isset($message)) echo $message ?></label>
       <div class="row">
         <div class="col-md-2">
             <div class="form-group label-floating">
@@ -142,10 +142,12 @@ if(isset($listContact)) {
       echo '<td><a href="./dashboard.php?action=formEditContact&id=' . $contact->getId() . '""><i class="material-icons">create</i></a></td>';
 
       echo '</tr>';
-    }
+    } 
+    }else{
+      echo "<label> Aucun résulat </label>";
     ?>
   </tbody>
- <label><?php if(isset($message)) echo $message ?></label>
+
 
 
 

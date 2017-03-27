@@ -73,11 +73,12 @@
 					<br>
 					<label for="dispo">&lt Disponibilité /&gt <em>*</em> :</label>
 					<br>
-					<input name="dispo" type="radio" value="Immédiate">Immédiate
+					<input name="dispo" type="radio" value="Immédiate" onclick="cacherAutre();">Immédiate
 					<br>
-					<input name="dispo" type="radio" value="Après la formation en cours">Après la formation en cours
+					<input name="dispo" type="radio" value="Après la formation en cours" onclick="cacherAutre();">Après la formation en cours
 					<br>
-					<input name="dispo" type="radio" value="Autre">Autre
+					<input name="dispo" type="radio" onclick="afficherAutre();">Autre
+					<input type="text" name="dispo" style="display: none;">
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />

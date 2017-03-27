@@ -149,6 +149,7 @@ switch ($action) {
 
 		$contactRepo = new ContactRepository();
 		$listContact = $contactRepo->getAll($pdo);
+
 		$nbFiches = $contactRepo -> getNb($pdo);
 		$vueAAfficher = "views/listContact.php";
 	}else {
@@ -268,7 +269,7 @@ switch ($action) {
 		break;
 	case "resultatRecherche":
 		if(!empty($_SESSION['mail'])) {
-if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance"]) || !empty($_POST["creation"]) || !empty($_POST["campus"]) || !empty($_POST["formation1"]) ){
+			if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance"]) || !empty($_POST["creation"]) || !empty($_POST["campus"]) || !empty($_POST["formation1"]) ){
 
 		$nom = $_POST["nom"];
 		$prenom = $_POST["prenom"];
@@ -277,20 +278,20 @@ if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance
 		$campus = $_POST["campus"];
 		$formation1 = $_POST["formation1"];
 
-			$contactRepo = new ContactRepository();
-			$listContact = $contactRepo->search($pdo, $nom, $prenom, $naissance, $creation, $campus, $formation1);
+		$contactRepo = new ContactRepository();
+		$listContact = $contactRepo->search($pdo, $nom, $prenom, $naissance, $creation, $campus, $formation1);
 
-			$campusRepo = new CampusRepository();
-			$listCampus = $campusRepo -> getAll($pdo);
+		$campusRepo = new CampusRepository();
+		$listCampus = $campusRepo -> getAll($pdo);
 
-			$formationRepo = new FormationRepository();
-			$listFormation = $formationRepo -> getAll($pdo);
+		$formationRepo = new FormationRepository();
+		$listFormation = $formationRepo -> getAll($pdo);
 
 			
-			$vueAAfficher = "views/recherche.php";
-}else {
-			header ('location:index.php');
-			exit();
+		$vueAAfficher = "views/recherche.php";
+			}else {
+				header ('location:index.php');
+				exit();
 		}
 
 }
