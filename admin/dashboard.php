@@ -1,12 +1,9 @@
-   <!-- Bootstrap core CSS     -->
-    <link href="web/css/bootstrap.min.css" rel="stylesheet" />
+<link href="web/css/bootstrap.min.css" rel="stylesheet" />
+<link href="web/css/material-dashboard.css" rel="stylesheet"/>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
-    <!--  Material Dashboard CSS    -->
-    <link href="web/css/material-dashboard.css" rel="stylesheet"/>
 
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 <?php
 session_start();
 include_once('../library/PDOFactory.php');
@@ -32,33 +29,15 @@ if (isset($_REQUEST['action'])) {
 
 switch ($action) {
 
-	case "verifLogin":
-		$adminRepo = new AdminRepository();
-		$admin = $adminRepo->getAdmin($pdo, $_POST['mail'], $_POST['mdp']);
-
-		if($admin) {
-			$_SESSION['mail'] = $admin->getMail();
-			$_SESSION['nom'] = $admin->getNom();
-			$_SESSION['mdp'] = $admin->getMdp();
-			$_SESSION['prenom'] = $admin->getPrenom();
-			$_SESSION['id'] = $admin->getId();
-			//On prépare la vue à afficher avec les données dont elle a besoin
-			$vueAAfficher = "views/home.php";
-		} else {
-				$message = "Identifiants invalides !";
-				$vue = "views/login.php";
-			}
-		break;
-
+/*Déconnexion*/
 	case "disconnect":
 		$_SESSION = array();
 		session_destroy();
 		header ('location:index.php');
 		exit();
-		break;
+	break;
 
-
-
+/*Tableau Liste Fiches Contact*/
 	case "listContact":
 			if(!empty($_SESSION['mail'])) {
 			$contactRepo = new ContactRepository();
@@ -71,10 +50,9 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-		break;
+	break;
 
-
-
+/*Edition d'une fiche contact*/
 	case "formEditContact":
 		if(!empty($_SESSION['mail'])) {
 
@@ -93,7 +71,9 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-		break;
+	break;
+
+/*Fonction mise à jour de la fiche*/	
 	case "updateContact":
 		if(!empty($_SESSION['mail'])) {
 			$contact = new FicheContact();
@@ -127,8 +107,9 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-		break;
+	break;
 
+/*Supprimer une ou pluseurs fiches*/	
  	case "deleteContact":
 
 	if(!empty($_SESSION['mail'])) {
@@ -145,8 +126,6 @@ switch ($action) {
 			$message = "Veuillez sélectionner une ou plusieurs fiches";
 		
 		}
-
-
 		$contactRepo = new ContactRepository();
 		$listContact = $contactRepo->getAll($pdo);
 
@@ -155,10 +134,11 @@ switch ($action) {
 	}else {
 			header ('location:index.php');
 			exit();
-		}
+	}
 
  	break;
 
+/*Exporter une ou plusieurs fiches au format .csv*/	
  	case "export":
 
 	if(!empty($_SESSION['mail'])) {
@@ -187,9 +167,9 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-	
 	break;
 
+/*Exporter une ou plusieurs fiches au format .csv et l'envoyer par email*/	
  	case "mailExport":
 
 	if(!empty($_SESSION['mail'])) {
@@ -219,16 +199,20 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-	
 	break;
+
+/*formulaire nouvel administrateur*/		
 	case "signin":
+
 		if(!empty($_SESSION['mail'])) {
 			$vueAAfficher = "views/formAddAdmin.php";
 		}else {
 			header ('location:index.php');
 			exit();
 		}
-		break;
+	break;
+
+/*Ajouter un nouvel administrateur*/	
 	case "addAdmin":
 		if(!empty($_SESSION['mail'])) {
 			if($_POST['mdp'] == $_POST['mdp2']){
@@ -252,6 +236,8 @@ switch ($action) {
 			exit();
 		}
 	break;
+
+/*formulaire recherche de fiche*/	
 	case "recherche":
 		if(!empty($_SESSION['mail'])) {
 
@@ -266,7 +252,8 @@ switch ($action) {
 			header ('location:index.php');
 			exit();
 		}
-		break;
+	break;
+/*formulaire recherche de fiche -> résultat de la recherche*/	
 	case "resultatRecherche":
 		if(!empty($_SESSION['mail'])) {
 			if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance"]) || !empty($_POST["creation"]) || !empty($_POST["campus"]) || !empty($_POST["formation1"]) ){
@@ -286,16 +273,14 @@ switch ($action) {
 
 		$formationRepo = new FormationRepository();
 		$listFormation = $formationRepo -> getAll($pdo);
-
-			
 		$vueAAfficher = "views/recherche.php";
 			}else {
 				header ('location:index.php');
 				exit();
+			}
 		}
-
-}
 	break;
+	
 	default:
 		if(empty($_SESSION['mail'])) {
 			$vue = "views/login.php";
