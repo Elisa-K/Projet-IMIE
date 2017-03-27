@@ -28,6 +28,7 @@ if (isset($_REQUEST['action'])) {
 
 
 
+
 switch ($action) {
 
 	case "verifLogin":
@@ -95,13 +96,3 @@ switch ($action) {
 
 	<!-- Material Dashboard javascript methods -->
 	<script src="web/js/material-dashboard.js"></script>
-
-	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-	<script src="web/js/demo.js"></script>
-    	$(document).ready(function(){
-
-			// Javascript method's body can be found in assets/js/demos.js
-        	demo.initDashboardPageCharts();
-
-    	});
-	</script>

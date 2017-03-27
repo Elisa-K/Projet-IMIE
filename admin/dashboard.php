@@ -4,10 +4,6 @@
     <!--  Material Dashboard CSS    -->
     <link href="web/css/material-dashboard.css" rel="stylesheet"/>
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="web/css/demo.css" rel="stylesheet"/>
-
-
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -71,6 +67,9 @@ switch ($action) {
 
 			$vueAAfficher = "views/listContact.php";
 
+		}else {
+			header ('location:index.php');
+			exit();
 		}
 		break;
 
@@ -183,6 +182,9 @@ switch ($action) {
 			$message = "Veuillez sélectionner une ou plusieurs fiches";
 			$vueAAfficher = "views/listContact.php";
 		}
+		}else {
+			header ('location:index.php');
+			exit();
 		}
 	
 	break;
@@ -211,7 +213,10 @@ switch ($action) {
 			$nbFiches = $contactRepo -> getNb($pdo);
 			$message = "Veuillez sélectionner une ou plusieurs fiches";
 			$vueAAfficher = "views/listContact.php";
-		}
+			}
+		}else {
+			header ('location:index.php');
+			exit();
 		}
 	
 	break;
@@ -283,7 +288,10 @@ if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance
 
 			
 			$vueAAfficher = "views/recherche.php";
-}
+}else {
+			header ('location:index.php');
+			exit();
+		}
 
 }
 	break;
@@ -313,7 +321,7 @@ if(!empty($_POST["nom"]) || !empty($_POST["prenom"]) || !empty($_POST["naissance
 
 
 //layout.php TOUJOURS a la fin
-
+		
 			include_once('layouts/layout.php');
 	
 

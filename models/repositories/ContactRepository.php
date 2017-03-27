@@ -103,7 +103,17 @@
 
     return $contact;
   }
+
+    public function homonyme($pdo, $nom, $prenom, $dateNaissance){
+
+      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND date_naissance = :dateNaissance');
+      $doublon = $resultat->fetch();
+
+      return $doublon;
+      
+    }
     public function export($pdo, $id){
+  
 
 $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
 

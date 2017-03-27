@@ -14,7 +14,7 @@
 							<input class="connexion" type="submit" value="Connexion"/>
 							<label><?php if(isset($message)) echo $message ?></label>
 							<input type="hidden" name="action" value="verifLogin"/>
-
+							<a href="../index.php" class="text-muted">Accueil</a>
 	    				</form>
 	  				</div>
 				</div>
