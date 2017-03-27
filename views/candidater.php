@@ -42,7 +42,7 @@
 					<br>
 				</div>
 			</diV>
-			<input type="button" name="next" class="nxt action-button" onclick="" value="Suivant"/>
+			<input type="button" name="next" class="next action-button" onclick="" value="Suivant"/>
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -73,12 +73,11 @@
 					<br>
 					<label for="dispo">&lt Disponibilité /&gt <em>*</em> :</label>
 					<br>
-					<input name="dispo" type="radio" value="Immédiate" onclick="cacherAutre();">Immédiate
+					<input name="dispo" type="radio" value="Immédiate">Immédiate
 					<br>
-					<input name="dispo" type="radio" value="Après la formation en cours" onclick="cacherAutre();">Après la formation en cours
+					<input name="dispo" type="radio" value="Après la formation en cours">Après la formation en cours
 					<br>
-					<input name="dispo" type="radio" onclick="afficherAutre();">Autre
-					<input type="text" name="dispo" style="display: none;">
+					<input name="dispo" type="radio" value="Autre">Autre
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />
