@@ -6,7 +6,9 @@
     public function getAdmin($pdo, $mail, $mdp) {
 
      
-  		$resultat = $pdo->prepare('SELECT id, nom, prenom, login, mdp FROM admin WHERE login = :mail AND mdp = :mdp');
+  		$resultat = $pdo->prepare('SELECT id, nom, prenom, login, mdp FROM admin WHERE login = :mail AND mdp =:mdp');
+
+$mdp = sha1($mdp);
 
   		$resultat->bindParam(':mail', $mail, PDO::PARAM_STR);
   		$resultat->bindParam(':mdp', $mdp, PDO::PARAM_STR);
