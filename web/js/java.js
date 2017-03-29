@@ -297,7 +297,7 @@ function verifPage1(){
 	verifNom(nom); 
 	verifPrenom(prenom); 
 	verifTel(tel);
-	if(varCiv && varNom && varPrenom && varNais && varTel && varEmail == ""){
+	if(varCiv == "" && varNom == "" && varPrenom == "" && varNais == "" && varTel =="" && varEmail == ""){
 		page1 = 1;
 	}else{
 		page1 = 0;
@@ -359,19 +359,14 @@ if($('input[name=campus]').is(':checked'))
    }
 };
 
-function verifPage3(){
-	verifCamp();
-	if(varCamp = 1){
-		page3 = 1;
-	}else{
-		page3 = 0;
-	}
-};
 
 function submitContact(){
 	verifCamp();
-    if(page1 == 0 || page2 == 0 || varCamp == 0) { 
+    if(page1 == 0 || page2 == 0 || varCamp != "") { 
 		alert(varCiv + varNom + varPrenom + varNais + varTel + varEmail + varDiplo + varDispo + varCamp);
+		console.log(page1);
+		console.log(page2);
+		console.log(varCamp);
 		event.preventDefault();
     }else{
 		document.forms["msform"].submit();
