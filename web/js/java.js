@@ -160,13 +160,220 @@ var popup = (function()
     init();
  
 })();
+  
 });
 
-
 function afficherAutre() {
-	document.getElementbyId("autre").style.display='inline';
-}
+	verifDispo();
+	if($("#dispo3").is(':checked')){     
+		document.getElementById('autre').style.display = "";
+	}else{
+		document.getElementById('autre').style.display = "none";
+	};
+};
 
-function cacherAutre() {
-	document.getElementbyId("autre").style.display='none';
-}
+/*var*/
+var varCiv = 0;
+var varNom = 0;
+var varPrenom = 0;
+var varNais = 0;
+var varTel = 0;
+var varEmail = 0;
+var varDiplo = 0;
+var varDispo = 0;
+var varCamp = 0;
+var page1 = 0;
+var page2 = 0;
+var page3 = 0;
+var mMessage = " est un champ obligatoire.\n"
+/*changement couleur*/
+function surligne(champ, erreur){
+   if(erreur)
+      champ.style.backgroundColor = "#fba";
+   else
+      champ.style.backgroundColor = "";
+};
+
+/*premiere page*/
+function verifCiv(){
+   if(document.getElementById('civ1').checked == true || document.getElementById('civ2').checked == true)
+   {
+	  document.getElementById('civ_civ').style.backgroundColor = "";
+	  varCiv = "";
+	  return true;
+   }
+   else
+   {
+	  document.getElementById('civ_civ').style.backgroundColor = "#fba";
+	  varCiv = "Civilité" + mMessage;
+	  return false;
+   }
+};
+
+function verifNom(champ){
+   if(champ.value.length < 2 || champ.value.length > 25)
+   {
+	  surligne(champ, true);
+	  varNom = "Nom" + mMessage;
+	  return false;
+   }
+   else
+   {
+	  surligne(champ, false);
+	  varNom = "";
+	  return true;
+   }
+};
+
+function verifPrenom(champ){
+   if(champ.value.length < 2 || champ.value.length > 25)
+   {
+	  surligne(champ, true);
+	  varPrenom = "Prenom" + mMessage;
+	  return false;
+   }
+   else
+   {
+	  surligne(champ, false);
+	  varPrenom = "";
+	  return true;
+   }
+};
+
+function verifNais(champ){
+   var regex = /[0-9]{4}\-[0-9]{2}\-[0-9]{2}/;
+   
+   if(!regex.test(champ.value))
+   {
+      surligne(champ, true);
+	  varNais = "Date de naissance" + mMessage;
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+	  varNais = "";
+      return true;
+   }
+};
+
+function verifTel(champ){
+	var regex = /[0-9]{10}/;
+   if(!regex.test(champ.value))
+   {
+	  surligne(champ, true);
+	  varTel = "Téléphone" + mMessage;
+	  return false;
+   }
+   else
+   {
+	  surligne(champ, false);
+	  varTel = "";
+	  return true;
+   }
+};
+
+function verifEmail(champ)
+{
+   var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+   if(!regex.test(champ.value))
+   {
+      surligne(champ, true);
+	  varEmail = "E-mail" + mMessage;
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+	  varEmail = "";
+      return true;
+   }
+};
+
+function verifPage1(){
+	verifCiv(); 
+	verifEmail(email); 
+	verifNais(date_naissance); 
+	verifNom(nom); 
+	verifPrenom(prenom); 
+	verifTel(tel);
+	if(varCiv && varNom && varPrenom && varNais && varTel && varEmail == ""){
+		page1 = 1;
+	}else{
+		page1 = 0;
+	}
+};
+
+function verifDiplo(champ){
+	if(champ.value.length < 2 || champ.value.length > 25)
+   {
+	  surligne(champ, true);
+	  varDiplo = "Dernier diplôme obtenu" + mMessage;
+	  return false;
+   }
+   else
+   {
+	  surligne(champ, false);
+	  varDiplo = "";
+	  return true;
+   }
+};
+
+function verifDispo(){
+   if(document.getElementById('dispo1').checked == true || document.getElementById('dispo2').checked == true || document.getElementById('dispo3').checked == true)
+   {
+	  document.getElementById('dispo_dispo').style.backgroundColor = "";
+	  varDispo = "";
+	  return true;
+   }
+   else
+   {
+	  document.getElementById('dispo_dispo').style.backgroundColor = "#fba";
+	  varDispo = "Disponibilité" + mMessage;
+	  return false;
+   }
+};
+
+function verifPage2(){
+	verifDiplo(nom_diplome);
+	verifDispo();
+	if(varDiplo == "" && varDispo == ""){
+		page2 = 1;
+	}else{
+		page2 = 0;
+	}
+};
+
+function verifCamp(){
+if($('input[name=campus]').is(':checked'))
+   {
+	  document.getElementById('camp_camp').style.backgroundColor = "";
+	  varCamp = "";
+	  return true;
+   }
+   else
+   {
+	  document.getElementById('camp_camp').style.backgroundColor = "#fba";
+	  varCamp = "Campus" + mMessage;
+	  return false;
+   }
+};
+
+function verifPage3(){
+	verifCamp();
+	if(varCamp = 1){
+		page3 = 1;
+	}else{
+		page3 = 0;
+	}
+};
+
+function submitContact(){
+	verifCamp();
+    if(page1 == 0 || page2 == 0 || varCamp == 0) { 
+		alert(varCiv + varNom + varPrenom + varNais + varTel + varEmail + varDiplo + varDispo + varCamp);
+		event.preventDefault();
+    }else{
+		document.forms["msform"].submit();
+	}
+};
