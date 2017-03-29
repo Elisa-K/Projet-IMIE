@@ -1,4 +1,3 @@
-<script src="web/js/formulaire.js"></script>
 <div class="row">
 <form id="msform" action="./index.php" method="POST">
             <label><?php if(isset($message)) echo $message ?></label>
@@ -11,11 +10,11 @@
         <fieldset>
 			<div class="row format-form">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="civ" id="civ">&lt Civilité /&gt <em>*</em> :</label>
+					<label for="civ" id="civ_civ">&lt Civilité /&gt <em>*</em> :</label>
 					<br>
 					<div class="civilite">
-					<input name="civ" type="radio" value="1" onblur="verifCiv(this)">Monsieur
-					<input name="civ" type="radio" value="2" onblur="verifCiv(this)">Madame
+					<input name="civ" id="civ1" type="radio" onclick="verifCiv()" value="1">Monsieur
+					<input name="civ" id="civ2" type="radio" onclick="verifCiv()" value="2">Madame
 					</div>
 					<br>
 					<label for="nom">&lt Nom /&gt <em>*</em> :</label>
@@ -42,7 +41,7 @@
 					<br>
 				</div>
 			</diV>
-			<input type="button" name="next" class="next action-button" onclick="" value="Suivant"/>
+			<input type="button" name="next" class="next action-button" onclick="verifPage1()" value="Suivant"/>
 		</fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -69,20 +68,20 @@
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<label for="nom">&lt Dernier diplôme obtenu /&gt <em>*</em> :</label>
 					<br>
-					<input type="text" name="nom_diplome"/>
+					<input type="text" name="nom_diplome" id="nom_diplome" onblur="verifDiplo(this)"/>
 					<br>
-					<label for="dispo">&lt Disponibilité /&gt <em>*</em> :</label>
+					<label for="dispo" id="dispo_dispo">&lt Disponibilité /&gt <em>*</em> :</label>
 					<br>
-					<input name="dispo" type="radio" value="Immédiate" onclick="cacherAutre();">Immédiate
+					<input name="dispo" id="dispo1" type="radio" value="Immédiate" onclick="afficherAutre()">Immédiate
 					<br>
-					<input name="dispo" type="radio" value="Après la formation en cours" onclick="cacherAutre();">Après la formation en cours
+					<input name="dispo" id="dispo2" type="radio" value="Après la formation en cours" onclick="afficherAutre()">Après la formation en cours
 					<br>
-					<input name="dispo" type="radio" onclick="afficherAutre();" >Autre
+					<input name="dispo" id="dispo3" type="radio" onclick="afficherAutre()">Autre
 					<input id="autre" type="text" name="dispo" style="display: none;">
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />
-			<input type="button" name="next" class="next action-button" value="Suivant" />
+			<input type="button" name="next" class="next action-button" value="Suivant" onclick="verifPage2()"/>
         </fieldset>
 		<fieldset>
 			<div class="row format-form">
@@ -118,12 +117,12 @@
 					<br>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-					<label for="campus" style="margin-bottom: 0px">&lt Campus &gt <em>*</em> :</label>
+					<label for="campus" style="margin-bottom: 0px" id="camp_camp">&lt Campus &gt <em>*</em> :</label>
 					<br>
 						<div class="row" style="padding: 0px">
 					<?php foreach ($listCampus as $campus) { ?>
 						<div class="col-lg-6">
-						<input type="radio" name="campus" value=<?php echo $campus->getId()?>><?php echo $campus->getNom(); ?>
+						<input type="radio" name="campus" id="camp" onclick="verifCamp()" value=<?php echo $campus->getId()?>><?php echo $campus->getNom(); ?>
 						</div>
 					<?php } ?>
 						</div>
@@ -144,7 +143,7 @@
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />
-			<input id="SaveAccount" type="submit" value="Envoyer" />
+			<input id="SaveAccount" type="button" value="Envoyer" onclick="submitContact()"/>
             <input type="hidden" name="action" value="addContact">
 		</fieldset>
 

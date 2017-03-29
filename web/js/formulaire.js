@@ -1,5 +1,15 @@
-/*Case autre (disponibilité)*/
-
+/*var*/
+var varCiv = 0;
+var varNom = 0;
+var varPrenom = 0;
+var varNais = 0;
+var varTel = 0;
+var varEmail = 0;
+var varSitu = 0;
+var varDiplo = 0;
+var varDispo = 0;
+var varForm = 0;
+var varCamp = 0;
 /*changement couleur*/
 function surligne(champ, erreur){
    if(erreur)
@@ -9,16 +19,18 @@ function surligne(champ, erreur){
 };
 
 /*premiere page*/
-function verifCiv(champ){
-   if(champ.value != 1 || champ.value != 2)
+function verifCiv(){
+   if(document.getElementById('civ1').checked == true || document.getElementById('civ2').checked == true)
    {
-	  surligne(champ, true);
-	  return false;
+	  document.getElementById('civ_civ').style.backgroundColor = "";
+	  varCiv = 1;
+	  return true;
    }
    else
    {
-	  surligne(champ, false);
-	  return true;
+	  document.getElementById('civ_civ').style.backgroundColor = "#fba";
+	  varCiv = 0;
+	  return false;
    }
 };
 
@@ -26,11 +38,13 @@ function verifNom(champ){
    if(champ.value.length < 2 || champ.value.length > 25)
    {
 	  surligne(champ, true);
+	  varNom = 0;
 	  return false;
    }
    else
    {
 	  surligne(champ, false);
+	  varNom = 1;
 	  return true;
    }
 };
@@ -39,11 +53,13 @@ function verifPrenom(champ){
    if(champ.value.length < 2 || champ.value.length > 25)
    {
 	  surligne(champ, true);
+	  varPrenom = 0;
 	  return false;
    }
    else
    {
 	  surligne(champ, false);
+	  varPrenom = 1;
 	  return true;
    }
 };
@@ -54,11 +70,13 @@ function verifNais(champ){
    if(!regex.test(champ.value))
    {
       surligne(champ, true);
+	  varNais = 0;
       return false;
    }
    else
    {
       surligne(champ, false);
+	  varNais = 1;
       return true;
    }
 };
@@ -68,11 +86,13 @@ function verifTel(champ){
    if(!regex.test(champ.value))
    {
 	  surligne(champ, true);
+	  varTel = 0;
 	  return false;
    }
    else
    {
 	  surligne(champ, false);
+	  varTel = 1;
 	  return true;
    }
 };
@@ -83,56 +103,28 @@ function verifEmail(champ)
    if(!regex.test(champ.value))
    {
       surligne(champ, true);
+	  varEmail = 0;
       return false;
    }
    else
    {
       surligne(champ, false);
+	  varEmail = 1;
       return true;
    }
 };
 
 function verifPage1(){
-	verifCiv(civ); verifEmail(email); verifNais(date_naissance); verifNom(nom); verifPrenom(prenom); verifTel(tel);
+	verifCiv(); verifEmail(email); verifNais(date_naissance); verifNom(nom); verifPrenom(prenom); verifTel(tel);
 	
-	if(verifCiv && verifEmail && verifNais && verifNom && verifPrenom && verifTel != true){
-		console.log([verifCiv && verifEmail && verifNais && verifNom && verifPrenom && verifTel]);
+	if(varCiv && varNom && varPrenom && varNais && varTel && varEmail == 1){
 		alert(1);
-		return false;
+		import {next} from "java";
+		return true;
 	}else{
 		alert(2);
-	if(animating) return false;
-	animating = true;
-	
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
-	
-	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-	
-	//show the next fieldset
-	next_fs.show(); 
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
-			//2. bring next_fs from the right(50%)
-			left = (now * 50)+"%";
-			//3. increase opacity of next_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({'transform': 'scale('+scale+')'});
-			next_fs.css({'left': left, 'opacity': opacity});
-		}, 
-		duration: 800, 
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		}, 
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
-};
+		document.getElementById("next").disabled = true;
+		return false;
 	};
+};
 
