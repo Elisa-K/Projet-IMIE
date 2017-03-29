@@ -122,16 +122,16 @@ body:before {
 }
 @media (max-width: 992px){
   .login-page {
-    width: 600px;
+    
     padding: 8% 0 0;
-    margin-left: -150px;
+    
 }
 
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 600px;
+
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
