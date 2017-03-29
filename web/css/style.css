@@ -1,7 +1,7 @@
 body{
 	background-color:#f3f2f0;
 }
-.header .col-lg-12{
+.header .nav{
 	padding-left:0px;
 	padding-right:0px;
 }
@@ -52,9 +52,9 @@ nav li{
 	padding-right:0px;
 	padding-left:0px;
 }
-.collapse{
+/*.collapse{
 	width:100%;
-}
+}*/
 /*fin header*/
 
 /*début footer*/
@@ -390,3 +390,4 @@ a.control_next {
   width: 160px;
   font-size: 18px;
 }
+

@@ -16,6 +16,7 @@ include_once('../models/repositories/ContactRepository.php');
 include_once('../models/repositories/FormationRepository.php');
 include_once('../models/repositories/CampusRepository.php');
 include_once('../models/repositories/StatutRepository.php');
+include_once('../models/repositories/autocomplete.php');
 
 $pdo = PDOFactory::getMysqlConnection();
 

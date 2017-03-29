@@ -4063,6 +4063,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > li > a {
     margin-bottom: 0;
   }
+
+
+}
+@media (max-width: 768px) {
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 3px 4px;
+}
 }
 .nav-tabs.nav-justified > li > a {
   margin-right: 0;
@@ -6754,3 +6764,33 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+@media (max-width: 320px){
+.navbar-nav{
+  margin-top:15px;
+  
+}
+nav ul{
+  background-color:#686868;
+  border-radius:10px;
+  width: 80%;
+  margin-left:25%;
+}
+nav li{
+  width:auto;
+  text-align:center;
+  font-size: 12px;
+}
+.li-nav{
+  float:none;
+  
+}
+
+.btn-info{
+  width:100%;
+  margin-bottom:20px;
+  background-color:#48b9c7;
+  font-weight:bold;
+  font-size: 14px;
+}
+
+}

@@ -15,3 +15,4 @@ function select_all(){
 		button.value = 'Sélectionner';
 	}
 };
+

@@ -5,18 +5,18 @@
 </div>
 
 <div class="row">
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<a class='iframe' href="https://imie-ecole-informatique.fr/blog/journees-portes-ouvertes.html"><img class="imgHome" src="web/img/porteOuverte.png" alt="portes ouvertes"/></a>
 	</div>
-	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 		<a class='iframe' href="https://imie-ecole-informatique.fr/formations"><img class="imgHOME" src="web/img/decouvreForm.png" alt="info formation"/></a>
 	</div>
 </div>
 <div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<iframe width="100%" height="315" src="https://www.youtube.com/embed/0q8_lVNu0rI" frameborder="0" allowfullscreen></iframe>
 		</div>
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
@@ -28,7 +28,7 @@
 			<div class="fb-page" data-href="https://www.facebook.com/IMIE.IT" data-tabs="timeline" data-height="325" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/IMIE.IT" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/IMIE.IT">IMIE École de la Filière Numérique</a></blockquote></div>
 		</div>
 		
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="height:325;overflow:scroll;overflow-x:hidden">
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="height:325;overflow:scroll;overflow-x:hidden">
 			<a class="twitter-timeline" href="https://twitter.com/EcoleIMIE">National Park Tweets - Curated tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</div>
 </div>

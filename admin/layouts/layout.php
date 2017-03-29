@@ -85,6 +85,9 @@
 				<div class="container-fluid">
       				<?php include($vueAAfficher); ?>
 
+      			</div>
+			</div>
+
 			<footer class="footer">
 				<div class="container-fluid">
 
@@ -93,8 +96,7 @@
 					</p>
 				</div>
 			</footer>
-		</div>
-	</div>
+
 
 </body>
 

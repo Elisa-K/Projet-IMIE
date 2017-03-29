@@ -14,7 +14,7 @@
         <div class="col-md-2">
             <div class="form-group label-floating">
               <label class="control-label">Nom</label>
-              <input type="text" class="form-control" name="nom">
+              <input type="text" class="form-control" name="nom" >
             </div>
           </div>
         <div class="col-md-2">

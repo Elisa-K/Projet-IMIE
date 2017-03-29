@@ -106,7 +106,7 @@
 
     public function homonyme($pdo, $nom, $prenom, $dateNaissance){
 
-      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND date_naissance = :dateNaissance');
+      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND tel = :tel');
       $doublon = $resultat->fetch();
 
       return $doublon;
@@ -188,7 +188,7 @@ $message_html = "<html><head></head><body>Ci-joint l'export des fiches contacts<
   $chemin = '.././export/export-'.$objDate.'.csv';
 
 $fichier   = fopen($chemin, "r");
-$attachement = fread($fichier, filesize($chemin));
+$attachement = fread($fichier, filesize($fichier));
 $attachement = chunk_split(base64_encode($attachement));
 fclose($fichier);
 //==========

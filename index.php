@@ -1,5 +1,7 @@
+
 <link rel="stylesheet" href="web/css/bootstrap.css"><!--css bootstrap-->
 <link rel="stylesheet" href="web/css/style.css">
+
 <link rel="stylesheet" href="web/css/colorbox.css"><!--notre style-->
 <link rel="stylesheet" href="web/css/slick.css">
 <?php
@@ -112,6 +114,7 @@ switch ($action) {
 //layout.php TOUJOURS a la fin
 include_once('layouts/layout.php');
 ?>
+
 <script src="web/js/jquery-3.1.1.min.js"></script>
 <script src="web/js/bootstrap.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
