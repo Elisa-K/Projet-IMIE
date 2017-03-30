@@ -114,7 +114,7 @@
     }
     public function export($pdo, $id){
   
-
+try {
 $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
 
   $date = date('d-m-Y');
@@ -161,7 +161,10 @@ $resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.d
 
   $message3 = "L'exportation à été réalisé avec succés !";
   return $message3;
-
+}    catch(PDOException $e) {
+      return "Votre exportation a échoué, en voici la raison : " . $e->getMessage();
+      return $message3;
+    }
 }
 public function sendMail(){
 

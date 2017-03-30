@@ -11,7 +11,7 @@ class Admin {
 public function save($pdo){
 
 try{
-	$stmt = $pdo->prepare('INSERT INTO admin (login, mdp, nom, prenom) VALUES (:email, :mdp, :nom, :prenom)');
+	$stmt = $pdo->prepare('INSERT INTO admin (login, mdp, nom, prenom) VALUES (:email, SHA1(:mdp), :nom, :prenom)');
 
 	$stmt->bindParam(':email', $this->mail, PDO::PARAM_STR);
     $stmt->bindParam(':mdp', $this->mdp, PDO::PARAM_STR);
