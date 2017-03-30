@@ -22,12 +22,13 @@
 
 
 
-        $res = $pdo->query("SELECT nom FROM campus_imie WHERE id =" . $idCampus);
+        $res = $pdo->query("SELECT nom FROM campus_imie WHERE id =".$idCampus);
+
           $res->setFetchMode(PDO::FETCH_OBJ);
           $obj2 = $res->fetch();
           $obj3 = $obj2->nom;
 
-        $res2 = $pdo->query("SELECT nom FROM formation WHERE id =" . $idFormation);
+        $res2 = $pdo->query("SELECT nom FROM formation WHERE id =".$idFormation);
           $res2->setFetchMode(PDO::FETCH_OBJ);
           $obj4 = $res2->fetch();
           $obj5 = $obj4->nom;
@@ -55,8 +56,9 @@
 
     public function getNb($pdo){
 
-    $req = $pdo->query("SELECT count(id) FROM fiche_contact");
-  $resultat = $req->fetch();
+    $req = $pdo->prepare("SELECT count(id) FROM fiche_contact");
+	$req->execute();
+    $resultat = $req->fetch();
 
     return $resultat ;
     }
@@ -65,8 +67,7 @@
  public function getOneById($pdo, $id) {
 
 
-    $resultat = $pdo->query('SELECT f.id, f.civilite, f.nom, f.prenom, f.date_naissance, f.id_formation, f.id_formation_1, f.id_formation_2, f.id_campus_imie, f.email, f.tel, c.nom AS cnom, fo1.nom AS fonom, fo2.nom as fo2nom, fo3.nom as fo3nom FROM fiche_contact f INNER JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id = ' . $id);
-
+    $resultat = $pdo->query('SELECT f.id, f.civilite, f.nom, f.prenom, f.date_naissance, f.id_formation, f.id_formation_1, f.id_formation_2, f.id_campus_imie, f.email, f.tel, c.nom AS cnom, fo1.nom AS fonom, fo2.nom as fo2nom, fo3.nom as fo3nom FROM fiche_contact f INNER JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id = '.$id);
     $resultat->setFetchMode(PDO::FETCH_OBJ);
 
     $obj = $resultat->fetch();
@@ -106,7 +107,11 @@
 
     public function homonyme($pdo, $nom, $prenom, $date_naissance){
 
-      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = "'.$nom.'" AND prenom = "'.$prenom.'" AND date_naissance = "'.$date_naissance.'"');
+      $resultat = $pdo->prepare('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND date_naissance = :date_naissance');
+	  $res->bindParam(':nom', $this->nom, PDO::PARAM_STR);
+	  $res->bindParam(':prenom', $this->nom, PDO::PARAM_STR);
+	  $res->bindParam(':date_naissance', $this->nom, PDO::PARAM_STR);
+	  $resultat->execute();
       $doublon = $resultat->fetch();
 
       return $doublon;
@@ -116,8 +121,8 @@
     public function export($pdo, $id){
   
 try {
-$resultat = $pdo->query('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
-
+$resultat = $pdo->prepare('SELECT f.civilite, f.nom, f.prenom, f.tel, f.email, f.date_naissance, f.diplome_obtenu, f.date_formulaire, c.code_campus, fo1.code_formation AS souhait1, fo2.code_formation AS souhait2, fo3.code_formation AS souhait3, f.etab_origine, f.disponibilite FROM fiche_contact f LEFT JOIN campus_imie c ON f.id_campus_imie = c.id LEFT JOIN formation fo1 ON f.id_formation = fo1.id LEFT JOIN formation fo2 ON f.id_formation_1 = fo2.id LEFT JOIN formation fo3 ON f.id_formation_2 = fo3.id WHERE f.id IN (' .$id.')');
+$resultat->execute();
   $date = date('d-m-Y');
   $heure =date('H-i');
   $objDate =''.$date.'-'.$heure.'';
@@ -261,12 +266,12 @@ $req = 'SELECT id, civilite, nom, prenom, email, tel, id_campus_imie, id_formati
 
 
 
-if ($nom) $req .= 'nom LIKE "%' . $nom . '%" AND ';
-if ($prenom) $req .= 'prenom LIKE "%' . $prenom . '%" AND ';
-if ($naissance) $req .= 'YEAR(date_naissance)=' . $naissance . ' AND ';
-if ($creation) $req .= 'date_formulaire ="' . $creation . '" AND ';
-if ($campus) $req .= 'id_campus_imie =' . $campus . ' AND ';
-if ($formation1) $req .= 'id_formation =' . $formation1 . ' AND ';
+if ($nom) $req .= 'nom LIKE "%'.$nom.'%" AND ';
+if ($prenom) $req .= 'prenom LIKE "%'.$prenom.'%" AND ';
+if ($naissance) $req .= 'YEAR(date_naissance)='.$naissance.' AND ';
+if ($creation) $req .= 'date_formulaire ="'.$creation.'" AND ';
+if ($campus) $req .= 'id_campus_imie ='.$campus.' AND ';
+if ($formation1) $req .= 'id_formation ='.$formation1.' AND ';
 
 
 $req = substr($req, 0, strlen($req)-5);
@@ -285,6 +290,7 @@ $listContact = array();
 
 
         $res = $pdo->query("SELECT nom FROM campus_imie WHERE id =" . $idCampus);
+
           $res->setFetchMode(PDO::FETCH_OBJ);
           $obj2 = $res->fetch();
           $obj3 = $obj2->nom;

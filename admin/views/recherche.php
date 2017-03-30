@@ -79,6 +79,7 @@
 
 </div>
 </div>
+
 <?php 
 if(isset($listContact)) {
   if(COUNT($listContact)>0){ ?>
@@ -96,7 +97,7 @@ if(isset($listContact)) {
 <form  action="./dashboard.php" method="post">
 <input type="hidden" name="action">
 
-    <input type="submit" value="Tout sélectionner" class="btn btn-default btn-round">
+    <input type="button" id="toggle" value="Sélectionner" class="btn btn-default btn-round" onClick="select_all()" />
 
     <input type="submit" value="Supprimer" onclick="this.form.action.value='deleteContact';this.form.submit();" class="btn btn-default btn-round">
 
@@ -161,6 +162,7 @@ if(isset($listContact)) {
 </div>
 
  <?php } } ?>
+
 
 
 

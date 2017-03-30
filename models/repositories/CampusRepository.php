@@ -10,7 +10,6 @@
 
       //Effectuer la requête en bbd pour récupérer la
       $req = $pdo->query("SELECT id, nom FROM campus_imie ORDER BY nom");
-
       $req->setFetchMode(PDO::FETCH_OBJ);
 
       //Boucler sur tous les enregistrements récupérés grâce à votre requête SELECT
