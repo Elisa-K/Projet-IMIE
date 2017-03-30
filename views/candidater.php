@@ -139,7 +139,6 @@
 						<option value="parents">Parents</option>
 						<option value="amis/bouche a oreille">Amis/bouche à oreille</option>
 					</select>
-					
 				</div>
 			</div>
 			<input type="button" name="previous" class="previous action-button" value="Précédent" />

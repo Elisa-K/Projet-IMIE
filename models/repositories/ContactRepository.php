@@ -104,12 +104,13 @@
     return $contact;
   }
 
-    public function homonyme($pdo, $nom, $prenom, $dateNaissance){
+    public function homonyme($pdo, $nom, $prenom, $date_naissance){
 
-      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND tel = :tel');
+      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = "'.$nom.'" AND prenom = "'.$prenom.'" AND date_naissance = "'.$date_naissance.'"');
       $doublon = $resultat->fetch();
 
       return $doublon;
+
       
     }
     public function export($pdo, $id){

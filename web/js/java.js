@@ -362,13 +362,13 @@ if($('input[name=campus]').is(':checked'))
 
 function submitContact(){
 	verifCamp();
-    if(page1 == 0 || page2 == 0 || varCamp != "") { 
+	if(page1 == 0 || page2 == 0 || varCamp != "") { 
 		alert(varCiv + varNom + varPrenom + varNais + varTel + varEmail + varDiplo + varDispo + varCamp);
 		console.log(page1);
 		console.log(page2);
 		console.log(varCamp);
 		event.preventDefault();
-    }else{
+	}else{
 		document.forms["msform"].submit();
-	}
+	};
 };
