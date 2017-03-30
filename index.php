@@ -63,8 +63,7 @@ switch ($action) {
 
 		$contactRepo = new ContactRepository();
 		$doublon = $contactRepo -> homonyme($pdo, $_POST["nom"], $_POST["prenom"], $_POST["date_naissance"]);
-		
-		var_dump ($doublon);
+
 		if($doublon[0] == 0){
 			$message = $contact->save($pdo, $_POST["formation2"], $_POST["formation3"]);
 		}else{

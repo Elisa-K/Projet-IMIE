@@ -107,11 +107,8 @@
 
     public function homonyme($pdo, $nom, $prenom, $date_naissance){
 
-      $resultat = $pdo->prepare('SELECT COUNT(id) FROM fiche_contact WHERE nom = :nom AND prenom = :prenom AND date_naissance = :date_naissance');
-	  $res->bindParam(':nom', $this->nom, PDO::PARAM_STR);
-	  $res->bindParam(':prenom', $this->nom, PDO::PARAM_STR);
-	  $res->bindParam(':date_naissance', $this->nom, PDO::PARAM_STR);
-	  $resultat->execute();
+      $resultat = $pdo->query('SELECT COUNT(id) FROM fiche_contact WHERE nom = "'.$nom.'" AND prenom = "'.$prenom.'" AND date_naissance = "'.$date_naissance.'"');
+
       $doublon = $resultat->fetch();
 
       return $doublon;
