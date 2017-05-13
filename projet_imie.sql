@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Mer 22 Mars 2017 à 08:37
+-- Généré le :  Mar 04 Avril 2017 à 09:16
 -- Version du serveur :  5.5.49-log
 -- Version de PHP :  7.0.9
 
@@ -29,20 +29,20 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL,
   `login` varchar(25) DEFAULT NULL,
-  `mdp` varchar(25) DEFAULT NULL,
+  `mdp` varchar(60) DEFAULT NULL,
   `nom` varchar(25) DEFAULT NULL,
   `prenom` varchar(25) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `admin`
 --
 
 INSERT INTO `admin` (`id`, `login`, `mdp`, `nom`, `prenom`) VALUES
-(1, 'kenny.richard@imie.fr', 'licorne', 'richard', 'kenny'),
-(2, 'julien.pinto@imie.fr', 'licorne72', 'pinto', 'julien'),
-(3, 'elisaklein66@gmail.com', 'licorne72', 'KLEIN', 'Elisa'),
-(4, 'elisaklein66@gmail.com', 'licorne72', 'KLEIN', 'Elisa');
+(1, 'kenny.richard@imie.fr', '6451ce6c06298eb87a0e1a87b9b6749cb11105a2', 'richard', 'kenny'),
+(2, 'julien.pinto@imie.fr', '6451ce6c06298eb87a0e1a87b9b6749cb11105a2', 'pinto', 'julien'),
+(3, 'elisaklein66@gmail.com', '6451ce6c06298eb87a0e1a87b9b6749cb11105a2', 'KLEIN', 'Elisa'),
+(8, 'yan.j@imie.fr', '6451ce6c06298eb87a0e1a87b9b6749cb11105a2', 'jeudy', 'yan');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `fiche_contact` (
   `formation` varchar(25) DEFAULT NULL,
   `diplome_obtenu` varchar(25) NOT NULL,
   `etab_origine` varchar(25) NOT NULL,
-  `info_imie` varchar(25) NOT NULL,
+  `info_imie` varchar(25) DEFAULT NULL,
   `disponibilite` varchar(50) NOT NULL,
   `date_formulaire` date NOT NULL,
   `id_campus_imie` int(11) NOT NULL,
@@ -93,18 +93,17 @@ CREATE TABLE IF NOT EXISTS `fiche_contact` (
   `id_formation` int(11) NOT NULL,
   `id_formation_1` int(11) DEFAULT NULL,
   `id_formation_2` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `fiche_contact`
 --
 
 INSERT INTO `fiche_contact` (`id`, `civilite`, `nom`, `prenom`, `date_naissance`, `tel`, `email`, `formation`, `diplome_obtenu`, `etab_origine`, `info_imie`, `disponibilite`, `date_formulaire`, `id_campus_imie`, `id_statut`, `id_formation`, `id_formation_1`, `id_formation_2`) VALUES
-(1, 1, 'Hamelin', 'Paul', '1934-12-06', 247554687, 'paul.hamelin@wanadoo.fr', 'CAP BDD', 'CAP BDD', 'IMIE Le Mans', 'site', 'maintenant', '2017-03-16', 1, 1, 2, 10, NULL),
-(2, 2, 'KLEIN', 'Elisa', '1991-06-06', 632964965, 'elisaklein66@gmail.com', 'it start', 'bts', 'imie', '', 'immédiate', '2017-03-20', 2, 2, 1, 2, 3),
-(4, 1, 'Mortier', 'Alexis', '1994-04-06', 632964965, 'alexis@gmail.com', 'ffg', 'ggff', 'ggf', '', '', '2017-03-20', 3, 4, 8, 7, 5),
-(6, 1, 'Cousin', 'Marvin', '1995-05-06', 632964965, 'elisaklein66@gmail.com', 'cfd', 'fvd', 'fvf', '', '', '2017-03-20', 6, 2, 7, 15, 14),
-(7, 1, 'KLEIN', 'Elisa', '1991-06-06', 632964965, 'elisaklein66@gmail.com', 'yhtyu', 'uyiyui', 'uyuyi', '', 'Immédiate', '2017-03-22', 3, 2, 7, NULL, NULL);
+(2, 2, 'KLEIN', 'Elisa', '1991-06-06', 632964965, 'elisaklein66@gmail.com', 'it start', 'bts', 'imie', '', 'immédiate', '2017-03-20', 2, 2, 1, 2, 2),
+(3, 1, 'jean', 'dev', '1992-12-05', 645789421, 'jeandev@gmail.com', '', 'jiforg', '', 'presse', 'Immédiate', '2017-03-23', 5, 5, 7, NULL, NULL),
+(4, 1, 'HAMELIN', 'Paul', '1997-04-12', 614859362, 'paul.h@hotmail.fr', '', 'BAC S', '', 'site internet', '', '2017-03-29', 1, 5, 1, NULL, NULL),
+(5, 2, 'jean', 'dev', '1995-02-15', 245789451, 'jean.dev@bg.fr', '', 'BAC S', '', 'site internet', '', '2017-03-30', 3, 5, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -214,7 +213,7 @@ ALTER TABLE `statut`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `campus_imie`
 --
@@ -224,7 +223,7 @@ ALTER TABLE `campus_imie`
 -- AUTO_INCREMENT pour la table `fiche_contact`
 --
 ALTER TABLE `fiche_contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `formation`
 --
